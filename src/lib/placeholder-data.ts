@@ -15,7 +15,7 @@ const albums = [
     year: "1974",
     notes: "",
     price: "100",
-    cover: "",
+    cover: "/album-covers/PathsOfIgnition.jpg",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const albums = [
     year: "1965",
     notes: "",
     price: "100",
-    cover: "",
+    cover: "/album-covers/RubberSoul.png",
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const albums = [
     year: "2000",
     notes: "",
     price: "100",
-    cover: "",
+    cover: "/album-covers/BHPThree.png",
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const albums = [
     year: "2002",
     notes: "",
     price: "100",
-    cover: "",
+    cover: "/album-covers/AmoreDelTropico.png",
   },
 
   {
@@ -52,7 +52,7 @@ const albums = [
     year: "2009",
     notes: "",
     price: "100",
-    cover: "",
+    cover: "/album-covers/BHPSix.png",
   },
   {
     id: 7,
@@ -61,7 +61,7 @@ const albums = [
     year: "2008",
     notes: "",
     price: "100",
-    cover: "",
+    cover: "/album-covers/DandelionGum.png",
   },
   {
     id: 8,
@@ -70,7 +70,7 @@ const albums = [
     year: "1970",
     notes: "This LP has the cover of Evil Woman on it.",
     price: "1000",
-    cover: "",
+    cover: "/album-covers/BlackSabbath.png",
   },
   {
     id: 9,
@@ -79,7 +79,7 @@ const albums = [
     year: "1971",
     notes: "this one is a little warped",
     price: "50",
-    cover: "",
+    cover: "/album-covers/MasterOfReality.png",
   },
   {
     id: 10,
@@ -88,7 +88,7 @@ const albums = [
     year: "1975",
     notes: "",
     price: "100",
-    cover: "",
+    cover: "/album-covers/Sabotage.png",
   },
   {
     id: 11,
