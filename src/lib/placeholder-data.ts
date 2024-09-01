@@ -7,6 +7,7 @@ const albums = [
     notes: "",
     price: "50",
     cover: "/album-covers/HeavyAxe.jpg",
+    genre: "Fusion"
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/PathsOfIgnition.jpg",
+    genre: "Instrumental"
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/RubberSoul.png",
+    genre: "Rock"
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/BHPThree.png",
+    genre: "Indie Rock"
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/AmoreDelTropico.png",
+    genre: "Indie Rock"
   },
 
   {
@@ -53,6 +58,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/BHPSix.png",
+    genre: "Indie Rock"
   },
   {
     id: 7,
@@ -62,6 +68,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/DandelionGum.png",
+    genre: "Indie Rock"
   },
   {
     id: 8,
@@ -71,6 +78,7 @@ const albums = [
     notes: "This LP has the cover of Evil Woman on it.",
     price: "1000",
     cover: "/album-covers/BlackSabbath.png",
+    genre: "Rock"
   },
   {
     id: 9,
@@ -80,6 +88,7 @@ const albums = [
     notes: "this one is a little warped",
     price: "50",
     cover: "/album-covers/MasterOfReality.png",
+    genre: "Rock"
   },
   {
     id: 10,
@@ -89,6 +98,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/Sabotage.png",
+    genre: "Rock"
   },
   {
     id: 11,
@@ -98,6 +108,7 @@ const albums = [
     notes: "",
     price: "50",
     cover: "/album-covers/Ziggy.png",
+    genre: "Rock"
   },
   {
     id: 12,
@@ -107,6 +118,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/LetsDance.png",
+    genre: "Rock"
   },
   {
     id: 13,
@@ -116,6 +128,7 @@ const albums = [
     notes: "",
     price: "1000",
     cover: "/album-covers/Berberian.png",
+    genre: "Experimental"
   },
   {
     id: 14,
@@ -125,6 +138,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/Journey.png",
+    genre: "Rock"
   },
   {
     id: 15,
@@ -134,6 +148,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/EzraBuchla",
+    genre: "Experimental"
   },
   {
     id: 16,
@@ -143,6 +158,7 @@ const albums = [
     notes: "",
     price: "50",
     cover: "/album-covers/Guts",
+    genre: "Rock"
   },
   {
     id: 17,
@@ -152,6 +168,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/TagoMago",
+    genre: "Rock"
   },
   {
     id: 18,
@@ -161,6 +178,7 @@ const albums = [
     notes: "no cover",
     price: "20",
     cover: "",
+    genre: "Rock"
   },
   {
     id: 19,
@@ -170,6 +188,7 @@ const albums = [
     notes: "",
     price: "20",
     cover: "/album-covers/Always.png",
+    genre: "Country"
   },
   {
     id: 20,
@@ -179,6 +198,7 @@ const albums = [
     notes: "",
     price: "30",
     cover: "/album-covers/LiveSongs.png",
+    genre: "Folk"
   },
   {
     id: 21,
@@ -188,6 +208,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/Ornette.png",
+    genre: "Jazz"
   },
   {
     id: 22,
@@ -197,6 +218,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/Ptah.png",
+    genre: "Jazz"
   },
   {
     id: 23,
@@ -206,6 +228,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/KissMe.png",
+    genre: "Rock"
   },
   {
     id: 24,
@@ -215,6 +238,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/DMvSJ",
+    genre: "Experimental"
   },
   {
     id: 25,
@@ -224,6 +248,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/SketchesOfSpain.png",
+    genre: "Jazz"
   },
   {
     id: 26,
@@ -233,6 +258,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/SilentWay.png",
+    genre: "Jazz"
   },
   {
     id: 27,
@@ -242,6 +268,7 @@ const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/GetUp.png",
+    genre: "Jazz"
   },
   {
     id: 28,
@@ -251,6 +278,7 @@ const albums = [
     notes: "no cover",
     price: "20",
     cover: "",
+    genre: "Rock"
   },
   {
     id: 29,
@@ -260,6 +288,7 @@ const albums = [
     notes: "",
     price: "50",
     cover: "/album-covers/H61.png",
+    genre: "Folk"
   },
   {
     id: 30,
@@ -269,6 +298,7 @@ const albums = [
     notes: "",
     price: "1000",
     cover: "/album-covers/GreenWorld.png",
+    genre: "Experimental"
   },
   {
     id: 31,
@@ -278,5 +308,6 @@ const albums = [
     notes: "",
     price: "50",
     cover: "/album-covers/PossibleMusics.png",
+    genre: "Experimental"
   },
 ];
