@@ -1,4 +1,4 @@
-const albums = [
+export const albums = [
   {
     id: 1,
     artist: "David Axelrod",
