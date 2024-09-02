@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Genre',
+  title: 'Create Account',
 };
 
 
 export default function CreateAccount() {
-  return <h1>Genre Page</h1>;
+  return <h1>Create Account</h1>;
 }
