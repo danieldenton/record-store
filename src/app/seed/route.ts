@@ -6,14 +6,13 @@ const client = await db.connect();
 async function seedAlbums() {
   await client.sql`
     CREATE TABLE IF NOT EXISTS albums (
-      id SERIAL PRIMARY KEY,
       artist VARCHAR(255) NOT NULL,
       name VARCHAR(255) NOT NULL,
       year VARCHAR(255) NOT NULL,
       notes VARCHAR(255) NOT NULL,
       price VARCHAR(255) NOT NULL,
       cover VARCHAR(255) NOT NULL,
-      genre VARCHAR(255) NOT NULL,
+      genre VARCHAR(255) NOT NULL
     );
   `;
 
