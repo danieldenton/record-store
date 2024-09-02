@@ -27,7 +27,7 @@ async function seedAlbums() {
     )
   );
 
-  return insertedAlbums;
+//   return insertedAlbums
 }
 
 export async function GET() {
