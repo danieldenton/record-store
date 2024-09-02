@@ -1,45 +1,44 @@
-// // import bcrypt from 'bcrypt';
-// // import { db } from '@vercel/postgres';
-// import { albums } from "../lib/placeholder-data";
+import { db } from '@vercel/postgres';
+import { albums } from "../lib/placeholder-data";
 
-// const client = await db.connect();
+const client = await db.connect();
 
-// async function seedAlbums() {
-//   await client.sql`
-//     CREATE TABLE IF NOT EXISTS albums (
-//       id SERIAL PRIMARY KEY,
-//       artist VARCHAR(255) NOT NULL,
-//       name VARCHAR(255) NOT NULL,
-//       year VARCHAR(255) NOT NULL,
-//       notes VARCHAR(255) NOT NULL,
-//       price VARCHAR(255) NOT NULL,
-//       cover VARCHAR(255) NOT NULL,
-//       genre VARCHAR(255) NOT NULL,
-//     );
-//   `;
+async function seedAlbums() {
+  await client.sql`
+    CREATE TABLE IF NOT EXISTS albums (
+      id SERIAL PRIMARY KEY,
+      artist VARCHAR(255) NOT NULL,
+      name VARCHAR(255) NOT NULL,
+      year VARCHAR(255) NOT NULL,
+      notes VARCHAR(255) NOT NULL,
+      price VARCHAR(255) NOT NULL,
+      cover VARCHAR(255) NOT NULL,
+      genre VARCHAR(255) NOT NULL,
+    );
+  `;
 
-//   const insertedAlbums = await Promise.all(
-//     albums.map(
-//       (album) => client.sql`
-//         INSERT INTO albums (id, artist, name, year, notes, price, cover, genre)
-//         VALUES (${album.id}, ${album.artist}, ${album.name}, ${album.year}, ${album.notes}, ${album.price}, ${album.cover}, ${album.genre})
-//         ON CONFLICT (id) DO NOTHING;
-//       `
-//     )
-//   );
+  const insertedAlbums = await Promise.all(
+    albums.map(
+      (album) => client.sql`
+        INSERT INTO albums (id, artist, name, year, notes, price, cover, genre)
+        VALUES (${album.id}, ${album.artist}, ${album.name}, ${album.year}, ${album.notes}, ${album.price}, ${album.cover}, ${album.genre})
+        ON CONFLICT (id) DO NOTHING;
+      `
+    )
+  );
 
-//   return insertedAlbums;
-// }
+  return insertedAlbums;
+}
 
-// export async function GET() {
-//   try {
-//     await client.sql`BEGIN`;
-//     await seedAlbums();
-//     await client.sql`COMMIT`;
+export async function GET() {
+  try {
+    await client.sql`BEGIN`;
+    await seedAlbums();
+    await client.sql`COMMIT`;
 
-//     return Response.json({ message: "Database seeded successfully" });
-//   } catch (error) {
-//     await client.sql`ROLLBACK`;
-//     return Response.json({ error }, { status: 500 });
-//   }
-// }
+    return Response.json({ message: "Database seeded successfully" });
+  } catch (error) {
+    await client.sql`ROLLBACK`;
+    return Response.json({ error }, { status: 500 });
+  }
+}
