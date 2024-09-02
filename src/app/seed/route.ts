@@ -1,4 +1,4 @@
-import { db } from '@vercel/postgres';
+import { db } from "@vercel/postgres";
 import { albums } from "../lib/placeholder-data";
 
 const client = await db.connect();
@@ -6,6 +6,7 @@ const client = await db.connect();
 async function seedAlbums() {
   await client.sql`
     CREATE TABLE IF NOT EXISTS albums (
+      id SERIAL PRIMARY KEY,
       artist VARCHAR(255) NOT NULL,
       name VARCHAR(255) NOT NULL,
       year VARCHAR(255) NOT NULL,
@@ -26,7 +27,7 @@ async function seedAlbums() {
     )
   );
 
-  return insertedAlbums
+  return insertedAlbums;
 }
 
 export async function GET() {
