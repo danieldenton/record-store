@@ -42,18 +42,18 @@ export const artists = [
     genres: ["Rock", "Metal"],
   },
   {
-    id: 1,
-    name: "David Axelrod",
+    id: 7,
+    name: "David Bowie",
     image: "",
     bio: "",
-    genres: [],
+    genres: ["Rock", "Pop", "Glam"],
   },
   {
-    id: 1,
-    name: "David Axelrod",
+    id: 8,
+    name: "Broadcast",
     image: "",
     bio: "",
-    genres: [],
+    genres: ["Indie Rock", "Soundtrack", "Experimental"]
   },
   {
     id: 1,

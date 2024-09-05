@@ -71,18 +71,18 @@ export const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/DandelionGum.png",
-    genre: "Indie Rock"
+    genres: ["Indie Rock", "Instrumental", "Experimental"],
+    artistsIds: [5]
   },
   {
     id: 8,
-    artist: "Black Sabbath",
     name: "Black Sabbath",
     release: "1970",
     notes: "This LP has the cover of Evil Woman on it.",
     price: "1000",
     cover: "/album-covers/BlackSabbath.png",
-    genres: ["Indie Rock", "Instrumental", "Experimental"],
-    artistsIds: [5]
+    genres: ["Rock", "Metal"],
+    artistsIds: [6]
   },
   {
     id: 9,
@@ -92,7 +92,8 @@ export const albums = [
     notes: "this one is a little warped",
     price: "50",
     cover: "/album-covers/MasterOfReality.png",
-    genre: "Rock"
+    genres: ["Rock", "Metal"],
+    artistsIds: [6]
   },
   {
     id: 10,
@@ -102,17 +103,18 @@ export const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/Sabotage.png",
-    genre: "Rock"
+    genres: ["Rock", "Metal"],
+    artistsIds: [6]
   },
   {
     id: 11,
-    artist: "David Bowie",
     name: "The Rise and Fall of Ziggy Stardust and the Spiders from Mars",
     release: "1972",
     notes: "",
     price: "50",
     cover: "/album-covers/Ziggy.png",
-    genre: "Rock"
+    genres: ["Rock", "Pop", "Glam"],
+    artistsIds: [7]
   },
   {
     id: 12,
@@ -122,7 +124,8 @@ export const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/LetsDance.png",
-    genre: "Rock"
+    genres: ["Rock", "Pop"],
+    artistsIds: [7]
   },
   {
     id: 13,
@@ -132,7 +135,8 @@ export const albums = [
     notes: "",
     price: "1000",
     cover: "/album-covers/Berberian.png",
-    genre: "Experimental"
+    genre: ["Indie Rock", "Soundtrack", "Experimental"],
+    artistsIds: [8]
   },
   {
     id: 14,
