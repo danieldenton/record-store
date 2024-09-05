@@ -1,20 +1,12 @@
-import { fetchSearch } from "../lib/data";
-import { Album } from "../lib/definitions";
-
-type SearchResult = Album & {
-  match: string;
-};
+import { SearchResult } from "../lib/definitions";
 
 export default async function SearchResults({
-  searchParams,
+  searchResults
 }: {
-  searchParams?: { query?: string };
+  searchResults: SearchResult[];
 }) {
-  const query = searchParams?.query || "";
-
-  const searchResults = query !== "" ? await fetchSearch(query) : [];
-
-  const results = searchResults?.map((result: SearchResult) => {
+  
+  const results = searchResults?.map((result) => {
     return (
       <div key={result.id} className="text-black">
         <p>{result.match}</p>

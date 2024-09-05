@@ -1,15 +1,16 @@
 import Search from "./search";
 import SearchResults from "./search-results";
+import { SearchResult } from "../lib/definitions";
 
 export default function SearchBar({
-  searchParams,
+  searchResults,
 }: {
-  searchParams?: { query?: string };
-}) {
+    searchResults: SearchResult[];
+  }) {
     return (
   <div className="flex flex-col">
     <Search />
-    <SearchResults searchParams={searchParams} />
+    <SearchResults searchResults={searchResults}/>
   </div>
   )
 }

@@ -2,7 +2,6 @@ import { sql } from "@vercel/postgres";
 import { Album } from "./definitions";
 
 export async function fetchSearch(query: string) {
-    console.log(query)
   try {
     const results = await sql<Album & { match: string }>`
         SELECT
@@ -19,10 +18,8 @@ export async function fetchSearch(query: string) {
           WHEN albums.artist ILIKE ${`%${query}%`} THEN 'artist'
         END AS match
       FROM albums
-      WHERE
-        albums.name ILIKE ${`%${query}%`} OR
-        albums.artist ILIKE ${`%${query}%`}
-      `;
+      WHERE albums.name ILIKE ${`%${query}%`} OR albums.artist ILIKE ${`%${query}%`}
+    `;
 
     return results.rows;
   } catch (error) {

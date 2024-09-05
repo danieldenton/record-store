@@ -8,3 +8,7 @@ export type Album = {
   cover: string;
   genre: string;
 };
+
+export type SearchResult = Album & {
+  match: string;
+};
