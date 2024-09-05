@@ -66,7 +66,6 @@ export const albums = [
   },
   {
     id: 7,
-    artist: "Black Moth Super Rainbow",
     name: "Dandelion Gum",
     release: "2008",
     notes: "",
@@ -82,7 +81,8 @@ export const albums = [
     notes: "This LP has the cover of Evil Woman on it.",
     price: "1000",
     cover: "/album-covers/BlackSabbath.png",
-    genre: "Rock"
+    genres: ["Indie Rock", "Instrumental", "Experimental"],
+    artistsIds: [5]
   },
   {
     id: 9,
