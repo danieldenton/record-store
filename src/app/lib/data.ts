@@ -1,6 +1,6 @@
 import { sql } from "@vercel/postgres";
 import { Album } from "./definitions";
-import { albums } from "./placeholder-data";
+import { albums } from "./albums-data";
 
 export async function fetchSearch(query: string) {
   try {
