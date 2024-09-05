@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import SearchBar from "./ui/search-bar";
 
 export default function Home({
