@@ -17,18 +17,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  searchParams,
 }: Readonly<{
   children: React.ReactNode;
-  searchParams?: { query?: string };
 }>) {
   return (
     <html lang="en">
       <body className={`${inter.className} bg-black text-white`}>
-        <div className="flex justify-center mt-[80px]">
-          <Search />
-          <SearchResults searchParams={searchParams} />
-        </div>
         {children}
       </body>
     </html>
