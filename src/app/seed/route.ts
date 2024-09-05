@@ -1,5 +1,6 @@
 import { db } from "@vercel/postgres";
 import { albums } from "../lib/albums-data";
+import { artists } from "../lib/artist-data";
 
 const client = await db.connect();
 
@@ -14,17 +15,15 @@ async function seedArtists() {
     );
   `;
 
-  const insertedArtists = await Promise.all(
-    albums.map(
-      (album) => client.sql`
-        INSERT INTO albums (id, artist, name, year, notes, price, cover, genre)
-        VALUES (${album.id}, ${album.artist}, ${album.name}, ${album.year}, ${album.notes}, ${album.price}, ${album.cover}, ${album.genre})
+  await Promise.all(
+    artists.map(
+      (artist) => client.sql`
+        INSERT INTO artists (id, name, bio, image, genres)
+        VALUES (${artist.id}, ${artist.name}, ${artist.bio}, ${artist.image}, ${artist.genres})
         ON CONFLICT (id) DO NOTHING;
       `
     )
   );
-
-return insertedArtists;
 }
 
 async function seedAlbums() {
@@ -36,29 +35,26 @@ async function seedAlbums() {
       notes VARCHAR(255) NOT NULL,
       price VARCHAR(255) NOT NULL,
       cover VARCHAR(255) NOT NULL,
-      genres TEXT[]
+      genres TEXT[],
+      artist_id INTEGER REFERENCES artists(id) ON DELETE SET NULL
     );
   `;
 
-  const insertedAlbums = await Promise.all(
+  await Promise.all(
     albums.map(
       (album) => client.sql`
-        INSERT INTO albums (id, artist, name, year, notes, price, cover, genre)
-        VALUES (${album.id}, ${album.artist}, ${album.name}, ${album.year}, ${album.notes}, ${album.price}, ${album.cover}, ${album.genre})
+        INSERT INTO albums (id, name, release, notes, price, cover, genres, artist_id)
+        VALUES (${album.id}, ${album.name}, ${album.release}, ${album.notes}, ${album.price}, ${album.cover}, ${album.genres}, ${album.artistId})
         ON CONFLICT (id) DO NOTHING;
       `
     )
   );
-
-  return insertedAlbums
 }
-
- 
 
 export async function GET() {
   try {
     await client.sql`BEGIN`;
-    await seedArtists()
+    await seedArtists();
     await seedAlbums();
     await client.sql`COMMIT`;
 
