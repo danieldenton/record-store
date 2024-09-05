@@ -8,7 +8,7 @@ export default function Home({
 
   return (
     <div className="flex flex-col justify-center mt-[80px]">
-      <SearchBar searchParams={searchParams} />
+      {/* <SearchBar searchParams={searchParams} /> */}
       <h1 className="flex justify-center">Home Page</h1>
     </div>
   );
