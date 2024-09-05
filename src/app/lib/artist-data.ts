@@ -53,14 +53,14 @@ export const artists = [
     name: "Broadcast",
     image: "",
     bio: "",
-    genres: ["Indie Rock", "Soundtrack", "Experimental"]
+    genres: ["Indie Rock", "Soundtrack", "Experimental"],
   },
   {
-    id: 1,
-    name: "David Axelrod",
+    id: 9,
+    name: "Arthur Brown's Kingdome Come",
     image: "",
     bio: "",
-    genres: [],
+    genres: ["Rock", "Psychedelic"],
   },
   {
     id: 1,

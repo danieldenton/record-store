@@ -146,7 +146,8 @@ export const albums = [
     notes: "",
     price: "100",
     cover: "/album-covers/Journey.png",
-    genre: "Rock"
+    genre: ["Rock", "Psychedelic"],
+    artistsIds: [9]
   },
   {
     id: 15,
