@@ -8,7 +8,7 @@ export async function fetchSearch(
     try {
       const results = await sql<Album>`
         SELECT
-          albums.is
+          albums.id
           albums.artist
           albums.name
           albums.year
