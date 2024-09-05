@@ -19,10 +19,10 @@ export default async function SearchResults({
 
   const results = searchResults.map((result) => {
     return (
-      <div className="bg-white text-black">
+      <div key={result.id} className="bg-white text-black h-9">
         <p>{result.match}</p>
       </div>
     );
   });
-  return <div className="bg-white">{results}</div>;
+  return <div className="bg-white">No results to display</div>;
 }
