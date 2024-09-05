@@ -12,17 +12,14 @@ export default async function SearchResults({
 }) {
   const query = searchParams?.query || "";
 
-  let searchResults: SearchResult[] = [];
-  if (query.trim()) {
-    searchResults = await fetchSearch(query);
-  }
+  const searchResults = query !== "" ? await fetchSearch(query) : [];
 
-  const results = searchResults.map((result) => {
+  const results = searchResults?.map((result: SearchResult) => {
     return (
-      <div key={result.id} className="bg-white text-black h-9">
+      <div key={result.id} className="text-black">
         <p>{result.match}</p>
       </div>
     );
   });
-  return <div className="bg-white">No results to display</div>;
+  return <div className="bg-white">{results}</div>;
 }

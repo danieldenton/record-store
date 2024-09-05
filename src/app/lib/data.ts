@@ -2,6 +2,7 @@ import { sql } from "@vercel/postgres";
 import { Album } from "./definitions";
 
 export async function fetchSearch(query: string) {
+    console.log(query)
   try {
     const results = await sql<Album & { match: string }>`
         SELECT

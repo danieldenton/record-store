@@ -21,12 +21,12 @@ export default function Search() {
     }, 300)
 
     return (
-        <div className="relative w-[700px]">
+        <div className="relative flex justify-center w-full">
           <label htmlFor="search" className="sr-only">
             Search
           </label>
           <input
-            className="peer block w-full rounded-md py-[9px] pl-10 text-black"
+            className="peer block w-[700px] rounded-md py-[9px] pl-10 text-black"
             placeholder="Search for an album or artist here"
             onChange={(e) => {
               handleSearch(e.target.value);
