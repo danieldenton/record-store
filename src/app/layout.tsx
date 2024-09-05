@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-black text-white`}>
-        <div className="flex justify-center mt-9">
+        <div className="flex justify-center mt-[80px]">
         <Search />
         </div>
         {children}

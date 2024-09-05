@@ -12,7 +12,6 @@ export default function Search() {
     const handleSearch = useDebouncedCallback((term) => {
       console.log(`Searching... ${term}`)
       const params = new URLSearchParams(searchParams);
-      params.set('page', '1')
       if (term) {
         params.set("query", term);
       } else {
@@ -27,8 +26,8 @@ export default function Search() {
             Search
           </label>
           <input
-            className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
-            // placeholder={placeholder}
+            className="peer block w-full rounded-md py-[9px] pl-10 text-black"
+            placeholder="Search for an album or artist here."
             onChange={(e) => {
               handleSearch(e.target.value);
             }}
