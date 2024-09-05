@@ -6,7 +6,7 @@ export async function fetchSearch(
   ) {
   
     try {
-      const invoices = await sql<Album>`
+      const results = await sql<Album>`
         SELECT
           albums.is
           albums.artist
@@ -17,16 +17,15 @@ export async function fetchSearch(
           albums.cover
           albums.genre
         FROM albums
-        JOIN customers ON invoices.customer_id = customers.id
         WHERE
           albums.name ILIKE ${`%${query}%`} OR
           albums.artist ILIKE ${`%${query}%`}
       `;
   
-      return invoices.rows;
+      return results.rows;
     } catch (error) {
       console.error('Database Error:', error);
-      throw new Error('Failed to fetch invoices.');
+      throw new Error('Failed to fetch results.');
     }
   }
   

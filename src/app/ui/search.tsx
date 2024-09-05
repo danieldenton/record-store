@@ -27,7 +27,7 @@ export default function Search() {
           </label>
           <input
             className="peer block w-full rounded-md py-[9px] pl-10 text-black"
-            placeholder="Search for an album or artist here."
+            placeholder="Search for an album or artist here"
             onChange={(e) => {
               handleSearch(e.target.value);
             }}
