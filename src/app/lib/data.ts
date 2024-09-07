@@ -49,8 +49,8 @@ export async function fetchAlbumById(id: string) {
           notes,
           price,
           cover,
-          genres,
-        FROM albums
+          genres
+        FROM albums  
         WHERE albums.id = ${id};
       `;
 
@@ -58,7 +58,7 @@ export async function fetchAlbumById(id: string) {
 
     const artistQuery = await sql`
         SELECT 
-          artist_id,
+          artist_id
         FROM album_artists
         WHERE album_artists.album_id = ${id}  
       `;
@@ -69,7 +69,7 @@ export async function fetchAlbumById(id: string) {
 
     const artistNamesQuery = await sql`
         SELECT 
-          name,
+          name
         FROM artists
         WHERE id = ANY(${artistIdsString});
   `;
