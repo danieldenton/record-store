@@ -1,11 +1,22 @@
 import { Metadata } from "next";
 import { fetchAlbumById } from "../../lib/data";
-import { AlbumProps } from "@/app/lib/definitions";
+import { AlbumWithArtist } from "@/app/lib/definitions";
 
 export const metadata: Metadata = {
-  title: 'Album',
+  title: "Album",
 };
 
-export default function Album({ id, name, release, notes, price, cover, genres,  }: AlbumProps) {
-  return <h1>{name}</h1>;
+export default async function Album({ params }: { params: { id: string } }) {
+  const id = params.id;
+  const album = await fetchAlbumById(id);
+  const artist = album.artists.map((artist) => {
+    return <h1>{artist}</h1>;
+  });
+
+  return (
+    <div>
+  <h1>{album.name}</h1>
+  <h1>{artist}</h1>
+  </div>
+)
 }

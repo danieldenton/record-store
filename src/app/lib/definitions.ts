@@ -1,4 +1,4 @@
-export type AlbumProps = {
+export type Album = {
   id: number;
   name: string;
   release: string;
@@ -7,13 +7,16 @@ export type AlbumProps = {
   cover: string;
   genres: string[];
   artistIds: number[]
-  artist: string
 };
 
 export type AlbumSearchResult = {
   id: number;
   name: string;
   type: string
+}
+
+export type AlbumWithArtist = Album & {
+  artist: string[]
 }
 
 export type Artist = {

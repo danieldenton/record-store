@@ -1,5 +1,5 @@
 import { sql } from "@vercel/postgres";
-import { ArtistSearchResult, AlbumSearchResult, AlbumProps } from "./definitions";
+import { ArtistSearchResult, AlbumSearchResult, Album } from "./definitions";
 
 export async function fetchSearch(query: string) {
   try {
@@ -41,7 +41,7 @@ export async function fetchSearch(query: string) {
 
 export async function fetchAlbumById(id: string) {
   try {
-    const album = await sql<AlbumProps>`
+    const albumQuery = await sql<Album>`
         SELECT
           id,
           name,
@@ -53,6 +53,8 @@ export async function fetchAlbumById(id: string) {
         FROM albums
         WHERE albums.id = ${id};
       `;
+
+    const album = albumQuery.rows[0];
 
     const artistQuery = await sql`
         SELECT 
@@ -72,11 +74,11 @@ export async function fetchAlbumById(id: string) {
         WHERE id = ANY(${artistIdsString});
   `;
 
-    const artist = artistNamesQuery.rows.map((row) => row.name);
+    const artists = artistNamesQuery.rows.map((row) => row.name);
 
     return {
       ...album,
-      artist,
+      artists,
     };
   } catch (error) {
     console.error("Database Error:", error);
