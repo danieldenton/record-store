@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { fetchAlbumById } from "../../lib/data";
-import { AlbumWithArtist } from "@/app/lib/definitions";
 
 export const metadata: Metadata = {
   title: "Album",

@@ -15,10 +15,6 @@ export type AlbumSearchResult = {
   type: string
 }
 
-export type AlbumWithArtist = Album & {
-  artist: string[]
-}
-
 export type Artist = {
   id: number;
   name: string;
