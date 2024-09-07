@@ -1,17 +1,17 @@
 import { SearchResult } from "../lib/definitions";
+import Link from "next/link";
 
 export default async function SearchResults({
-  searchResults
+  searchResults,
 }: {
   searchResults: SearchResult[];
 }) {
-  
   const results = searchResults?.map((result) => {
     return (
-      <div key={result.id} className="text-black">
-        <p>{result.name}</p>
-      </div>
+      <Link href={`${result.type}`} key={result.id} className="flex flex-row text-primary hover:bg-popover">
+        <p>{result.name}</p> <p className="text-destructive text-sm ml-2 mt-0.5">{result.type}</p>
+      </Link>
     );
   });
-  return <div className="bg-white">{results}</div>;
+  return <div className="bg-secondary">{results}</div>;
 }
