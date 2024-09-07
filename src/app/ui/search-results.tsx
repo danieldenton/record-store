@@ -9,7 +9,7 @@ export default async function SearchResults({
   const results = searchResults?.map((result) => {
     return (
       <div key={result.id} className="text-black">
-        <p>{result.match}</p>
+        <p>{result.name}</p>
       </div>
     );
   });

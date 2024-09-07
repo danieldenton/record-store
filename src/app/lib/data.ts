@@ -1,14 +1,9 @@
 import { sql } from "@vercel/postgres";
-import {
-  ArtistSearchResults,
-  AlbumSearchResults,
-  SearchResult,
-} from "./definitions";
+import { ArtistSearchResult, AlbumSearchResult } from "./definitions";
 
 export async function fetchSearch(query: string) {
   try {
-    // Search in albums table
-    const albumResults = await sql<AlbumSearchResults>`
+    const albumResults = await sql<AlbumSearchResult>`
         SELECT
           albums.id,
           albums.name
@@ -16,8 +11,7 @@ export async function fetchSearch(query: string) {
         WHERE albums.name ILIKE ${`%${query}%`}
       `;
 
-    // Search in artists table
-    const artistResults = await sql<ArtistSearchResults>`
+    const artistResults = await sql<ArtistSearchResult>`
         SELECT
           artists.id,
           artists.name
@@ -25,14 +19,13 @@ export async function fetchSearch(query: string) {
         WHERE artists.name ILIKE ${`%${query}%`}
       `;
 
-    // Combine results
     const combinedResults = [
-      ...albumResults.rows.map((row: AlbumSearchResults) => ({
+      ...albumResults.rows.map((row: AlbumSearchResult) => ({
         id: row.id,
         name: row.name,
         type: "album",
       })),
-      ...artistResults.rows.map((row: ArtistSearchResults) => ({
+      ...artistResults.rows.map((row: ArtistSearchResult) => ({
         id: row.id,
         name: row.name,
         type: "artist",
