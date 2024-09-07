@@ -1,8 +1,6 @@
 import { Metadata } from "next";
-import imageComponent from "@/app/ui/image-component";
 import { fetchArtistById, fetchSearch } from "../../lib/data";
 import SearchBar from "@/app/ui/search-bar";
-import ImageNotFound from "@/app/ui/image-not-found";
 import ImageComponent from "@/app/ui/image-component";
 
 export const metadata: Metadata = {
