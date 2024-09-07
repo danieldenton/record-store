@@ -1,3 +1,5 @@
+'use client'
+
 import { SearchResult } from "../lib/definitions";
 import Link from "next/link";
 
@@ -6,6 +8,10 @@ export default function SearchResults({
 }: {
   searchResults: SearchResult[];
 }) {
+
+  const handleSelection = () => {
+
+  }
   return (
     <div className="bg-secondary">
       {searchResults.map((result) => (

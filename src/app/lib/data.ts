@@ -1,5 +1,5 @@
 import { sql } from "@vercel/postgres";
-import { ArtistSearchResult, AlbumSearchResult, Album } from "./definitions";
+import { ArtistSearchResult, AlbumSearchResult, AlbumProps } from "./definitions";
 
 export async function fetchSearch(query: string) {
   try {
@@ -41,7 +41,7 @@ export async function fetchSearch(query: string) {
 
 export async function fetchAlbumById(id: string) {
   try {
-    const album = await sql<Album>`
+    const album = await sql<AlbumProps>`
         SELECT
           id,
           name,

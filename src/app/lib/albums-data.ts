@@ -1,6 +1,3 @@
-import { artists } from "./artist-data";
-import { Album } from "./definitions";
-
 export const albums = [
   {
     id: 1,
