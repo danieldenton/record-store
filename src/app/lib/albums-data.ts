@@ -41,7 +41,7 @@ export const albums = [
     price: "100",
     cover: "/album-covers/BHPThree.png",
     genres: ["Indie Rock", "Rock"],
-    artistsIds: [4]
+    artistIds: [4]
   },
   {
     id: 5,
@@ -51,7 +51,7 @@ export const albums = [
     price: "100",
     cover: "/album-covers/AmoreDelTropico.png",
     genres: ["Indie Rock", "Rock"],
-    artistsIds: [4]
+    artistIds: [4]
   },
 
   {
@@ -62,7 +62,7 @@ export const albums = [
     price: "100",
     cover: "/album-covers/BHPSix.png",
     genres: ["Indie Rock", "Rock"],
-    artistsIds: [4]
+    artistIds: [4]
   },
   {
     id: 7,
@@ -72,7 +72,7 @@ export const albums = [
     price: "100",
     cover: "/album-covers/DandelionGum.png",
     genres: ["Indie Rock", "Instrumental", "Experimental"],
-    artistsIds: [5]
+    artistIds: [5]
   },
   {
     id: 8,
@@ -82,7 +82,7 @@ export const albums = [
     price: "1000",
     cover: "/album-covers/BlackSabbath.png",
     genres: ["Rock", "Metal"],
-    artistsIds: [6]
+    artistIds: [6]
   },
   {
     id: 9,
@@ -93,7 +93,7 @@ export const albums = [
     price: "50",
     cover: "/album-covers/MasterOfReality.png",
     genres: ["Rock", "Metal"],
-    artistsIds: [6]
+    artistIds: [6]
   },
   {
     id: 10,
@@ -104,7 +104,7 @@ export const albums = [
     price: "100",
     cover: "/album-covers/Sabotage.png",
     genres: ["Rock", "Metal"],
-    artistsIds: [6]
+    artistIds: [6]
   },
   {
     id: 11,
@@ -114,7 +114,7 @@ export const albums = [
     price: "50",
     cover: "/album-covers/Ziggy.png",
     genres: ["Rock", "Pop", "Glam"],
-    artistsIds: [7]
+    artistIds: [7]
   },
   {
     id: 12,
@@ -125,7 +125,7 @@ export const albums = [
     price: "100",
     cover: "/album-covers/LetsDance.png",
     genres: ["Rock", "Pop"],
-    artistsIds: [7]
+    artistIds: [7]
   },
   {
     id: 13,
@@ -135,49 +135,48 @@ export const albums = [
     notes: "",
     price: "1000",
     cover: "/album-covers/Berberian.png",
-    genre: ["Indie Rock", "Soundtrack", "Experimental"],
-    artistsIds: [8]
+    genres: ["Indie Rock", "Soundtrack", "Experimental"],
+    artistIds: [8]
   },
   {
     id: 14,
-    artist: "Arthur Brown's Kingdome Come",
     name: "Journey",
     release: "1974",
     notes: "",
     price: "100",
     cover: "/album-covers/Journey.png",
-    genre: ["Rock", "Psychedelic"],
-    artistsIds: [9]
+    genres: ["Rock", "Psychedelic"],
+    artistIds: [9]
   },
   {
     id: 15,
-    artist: "Ezra Buchla",
-    name: "Ezra Buchla",
+    name: "Untitled",
     release: "2013",
     notes: "",
     price: "100",
     cover: "/album-covers/EzraBuchla",
-    genre: "Experimental"
+    genres: ["Experimental", "Ambient"],
+    artistIds: [10]
   },
   {
     id: 16,
-    artist: "John Cale",
     name: "Guts",
     release: "1977",
     notes: "",
     price: "50",
     cover: "/album-covers/Guts",
-    genre: "Rock"
+    genres: ["Rock"],
+    artistIds: [11]
   },
   {
     id: 17,
-    artist: "Can",
     name: "Tago Mago",
     release: "1971",
     notes: "",
     price: "100",
     cover: "/album-covers/TagoMago",
-    genre: "Rock"
+    genres: ["Rock", "Kraught-Rock", "Experimental"],
+    artistIds: [12]
   },
   {
     id: 18,
