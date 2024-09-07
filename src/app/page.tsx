@@ -9,7 +9,7 @@ export default async function Home({
   const query = searchParams?.query || "";
   const searchResults = query !== "" ? await fetchSearch(query) : [];
   return (
-    <div className="flex Params={searchParams}flex-col justify-center mt-[80px]">
+    <div className="flex Params={searchParams}flex-col justify-center">
       <SearchBar searchResults={searchResults} />
       <h1 className="flex justify-center">Home Page</h1>
     </div>

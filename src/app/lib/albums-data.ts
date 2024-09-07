@@ -127,7 +127,7 @@ export const albums = [
   {
     id: 13,
     artist: "Broadcast",
-    name: "Berbarian Sound",
+    name: "Berberian Sound",
     release: "2013",
     notes: "",
     price: "1000",

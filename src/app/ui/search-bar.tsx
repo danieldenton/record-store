@@ -8,7 +8,7 @@ export default function SearchBar({
     searchResults: SearchResult[];
   }) {
     return (
-  <div className="flex flex-col">
+  <div className="flex flex-col pt-[50px]">
     <Search />
     <SearchResults searchResults={searchResults}/>
   </div>

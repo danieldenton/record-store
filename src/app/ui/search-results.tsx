@@ -9,9 +9,6 @@ export default function SearchResults({
   searchResults: SearchResult[];
 }) {
 
-  const handleSelection = () => {
-
-  }
   return (
     <div className="bg-secondary">
       {searchResults.map((result) => (
