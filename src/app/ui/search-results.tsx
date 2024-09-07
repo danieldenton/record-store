@@ -14,7 +14,6 @@ export default function SearchResults({
       {searchResults.map((result) => (
         <Link
           href={`/${result.type}/${result.id}`}
-          key={result.id}
           className="flex flex-row text-primary hover:bg-popover"
         >
           <p>{result.name}</p>

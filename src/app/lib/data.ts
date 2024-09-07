@@ -1,5 +1,11 @@
 import { sql } from "@vercel/postgres";
-import { ArtistSearchResult, AlbumSearchResult, Album, Artist } from "./definitions";
+import {
+  ArtistSearchResult,
+  AlbumSearchResult,
+  Album,
+  Artist,
+  AlbumsOnArtistPage
+} from "./definitions";
 
 export async function fetchSearch(query: string) {
   try {
@@ -87,8 +93,8 @@ export async function fetchAlbumById(id: string) {
 }
 
 export async function fetchArtistById(id: string) {
-    try {
-      const artistQuery = await sql<Artist>`
+  try {
+    const artistQuery = await sql<Artist>`
           SELECT
             id,
             name,
@@ -98,35 +104,40 @@ export async function fetchArtistById(id: string) {
           FROM artists  
           WHERE artists.id = ${id};
         `;
-  
-      const artist = artistQuery.rows[0];
-  
-      const albumsQuery = await sql`
+
+    const artist = artistQuery.rows[0];
+
+    const albumsQuery = await sql`
           SELECT 
             album_id
           FROM album_artists
           WHERE album_artists.artist_id = ${id}  
         `;
-  
-      const albumIds = albumsQuery.rows.map((row) => row.album_id);
-  
-      const albumIdsString = `{${albumIds.join(",")}}`;
-  
-      const albumNamesQuery = await sql`
+
+    const albumIds = albumsQuery.rows.map((row) => row.album_id);
+
+    const albumIdsString = `{${albumIds.join(",")}}`;
+
+    const albumNamesQuery = await sql`
           SELECT 
-            name
+            name,
+            cover
           FROM albums
           WHERE id = ANY(${albumIdsString});
     `;
+
+    const albums: AlbumsOnArtistPage[] = albumNamesQuery.rows.map((row) => ({
+        name: row.name,
+        cover: row.cover
+      }));
   
-      const artists = albumNamesQuery.rows.map((row) => row.name);
-  
-      return {
-        ...artist,
-        artists,
-      };
-    } catch (error) {
-      console.error("Database Error:", error);
-      throw new Error("Failed to fetch album.");
-    }
+
+    return {
+      ...artist,
+      albums,
+    };
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch album.");
   }
+}
