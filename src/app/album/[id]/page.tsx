@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { fetchAlbumById, fetchSearch } from "../../lib/data";
 import SearchBar from "@/app/ui/search-bar";
+import ImageNotFound from "@/app/ui/image-not-found";
 
 export const metadata: Metadata = {
   title: "Album",
@@ -24,8 +25,12 @@ export default async function Album({
 
   return (
     <div className="w-full flex flex-col items-center align center border">
-      <SearchBar searchResults={searchResults}/>
-      <Image src={album.cover} alt="album cover" width={300} height={300} />
+      <SearchBar searchResults={searchResults} />
+      {album.cover ? (
+        <Image src={album.cover} alt="album cover" width={300} height={300} />
+      ) : (
+        <ImageNotFound />
+      )}{" "}
       <h1>{album.name}</h1>
       <h2>{artist}</h2>
     </div>
