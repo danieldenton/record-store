@@ -63,6 +63,7 @@ export async function GET() {
       { status: 200 }
     );
   } catch (error) {
+    console.log(error)
     await client.sql`ROLLBACK`;
     return new Response("There was an error seeding you data", {
       status: 500,

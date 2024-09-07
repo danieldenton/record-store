@@ -1,28 +1,45 @@
 import { sql } from "@vercel/postgres";
-import { Album } from "./definitions";
-import { albums } from "./albums-data";
+import {
+  ArtistSearchResults,
+  AlbumSearchResults,
+  SearchResult,
+} from "./definitions";
 
 export async function fetchSearch(query: string) {
   try {
-    const results = await sql<Album & { match: string }>`
+    // Search in albums table
+    const albumResults = await sql<AlbumSearchResults>`
         SELECT
-            albums.id,
-            albums.artist,
-            albums.name,
-            albums.year,
-            albums.notes,
-            albums.price,
-            albums.cover,
-            albums.genre,
-            CASE
-            WHEN albums.name ILIKE ${`%${query}%`} THEN albums.name
-            WHEN albums.artist ILIKE ${`%${query}%`} THEN albums.artist
-            END AS match
+          albums.id,
+          albums.name
         FROM albums
-        WHERE albums.name ILIKE ${`%${query}%`} OR albums.artist ILIKE ${`%${query}%`}
-        `;
+        WHERE albums.name ILIKE ${`%${query}%`}
+      `;
 
-    return results.rows;
+    // Search in artists table
+    const artistResults = await sql<ArtistSearchResults>`
+        SELECT
+          artists.id,
+          artists.name
+        FROM artists
+        WHERE artists.name ILIKE ${`%${query}%`}
+      `;
+
+    // Combine results
+    const combinedResults = [
+      ...albumResults.rows.map((row: AlbumSearchResults) => ({
+        id: row.id,
+        name: row.name,
+        type: "album",
+      })),
+      ...artistResults.rows.map((row: ArtistSearchResults) => ({
+        id: row.id,
+        name: row.name,
+        type: "artist",
+      })),
+    ];
+
+    return combinedResults;
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch results.");

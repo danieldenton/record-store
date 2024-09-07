@@ -9,6 +9,12 @@ export type Album = {
   artistIds: number[]
 };
 
+export type AlbumSearchResults = {
+  id: number;
+  name: string;
+  type: string
+}
+
 export type Artist = {
   id: number;
   name: string;
@@ -17,6 +23,13 @@ export type Artist = {
   genres: string[]
 };
 
-export type SearchResult = Album & {
+export type ArtistSearchResults = {
+  id: number;
+  name: string;
+  type: string
+}
+
+
+export type SearchResult = Album | Artist & {
   match: string;
 };
