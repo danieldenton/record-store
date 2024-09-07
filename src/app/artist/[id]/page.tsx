@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { fetchArtistById, fetchSearch } from "../../lib/data";
 import SearchBar from "@/app/ui/search-bar";
 import ImageComponent from "@/app/ui/image-component";
+import AlbumNameLinks from "@/app/ui/album-name-link";
 
 export const metadata: Metadata = {
   title: "Artist",
@@ -18,9 +19,6 @@ export default async function Artist({
   const searchResults = query !== "" ? await fetchSearch(query) : [];
   const id = params.id;
   const artist = await fetchArtistById(id);
-  const albumNames = artist.albums.map((album) => {
-    return <h1>{album.name}</h1>;
-  });
   const image = artist.image ? artist.image : artist.albums[0].cover || "";
 
   return (
@@ -28,7 +26,7 @@ export default async function Artist({
       <SearchBar searchResults={searchResults} />
       <ImageComponent image={image} />
       <h1>{artist.name}</h1>
-      {albumNames}
+      <AlbumNameLinks albums={artist.albums} />
     </div>
   );
 }
