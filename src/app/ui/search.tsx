@@ -21,10 +21,11 @@ export default function Search() {
     }, 300)
 
     return (
-        <div className="relative flex justify-center w-full">
+        <div className="flex justify-center w-full">
           <label htmlFor="search" className="sr-only">
             Search
           </label>
+          <div className="relative w-[700px]">
           <input
             className="peer block w-[700px] rounded-md py-[9px] pl-10 text-black"
             placeholder="Search for an album or artist here"
@@ -34,6 +35,7 @@ export default function Search() {
             defaultValue={searchParams.get("query")?.toString()}
           />
           <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+          </div>
         </div>
       );
 }

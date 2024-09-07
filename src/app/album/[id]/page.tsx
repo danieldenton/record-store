@@ -32,7 +32,7 @@ export default async function Album({
         <ImageNotFound />
       )}{" "}
       <h1>{album.name}</h1>
-      <h2>{artist}</h2>
+      {artist}
     </div>
   );
 }
