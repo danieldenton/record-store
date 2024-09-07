@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { fetchArtistById, fetchSearch } from "../../lib/data";
-import { AlbumsOnArtistPage } from "@/app/lib/definitions";
 import SearchBar from "@/app/ui/search-bar";
 import ImageNotFound from "@/app/ui/image-not-found";
 
@@ -26,7 +25,7 @@ export default async function Artist({
   const image = artist.image ? artist.image : artist.albums[0].cover || "";
 
   return (
-    <div className="w-full flex flex-col items-center align center border">
+    <div className="w-full flex flex-col items-center align center">
       <SearchBar searchResults={searchResults} />
       {image ? (
         <Image src={image} alt="artist cover" width={300} height={300} />

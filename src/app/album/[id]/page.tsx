@@ -24,7 +24,7 @@ export default async function Album({
   });
 
   return (
-    <div className="w-full flex flex-col items-center align center border">
+    <div className="w-full flex flex-col items-center align center">
       <SearchBar searchResults={searchResults} />
       {album.cover ? (
         <Image src={album.cover} alt="album cover" width={300} height={300} />
