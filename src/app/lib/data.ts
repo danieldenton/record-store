@@ -63,15 +63,15 @@ export async function fetchAlbumById(id: string) {
         WHERE album_artists.album_id = ${id}  
       `;
 
-    const artistIds = artistQuery.rows.map((row) => row.artist_id);
+    const albumIds = artistQuery.rows.map((row) => row.artist_id);
 
-    const artistIdsString = `{${artistIds.join(",")}}`;
+    const albumIdsString = `{${albumIds.join(",")}}`;
 
     const artistNamesQuery = await sql`
         SELECT 
           name
         FROM artists
-        WHERE id = ANY(${artistIdsString});
+        WHERE id = ANY(${albumIdsString});
   `;
 
     const artists = artistNamesQuery.rows.map((row) => row.name);
@@ -86,45 +86,43 @@ export async function fetchAlbumById(id: string) {
   }
 }
 
-export async function fetchArtistId(id: string) {
+export async function fetchArtistById(id: string) {
     try {
-      const albumQuery = await sql<Album>`
+      const artistQuery = await sql<Artist>`
           SELECT
             id,
             name,
-            release,
-            notes,
-            price,
-            cover,
+            bio,
+            image,
             genres
-          FROM albums  
-          WHERE albums.id = ${id};
+          FROM artists  
+          WHERE artists.id = ${id};
         `;
   
-      const album = albumQuery.rows[0];
+      const artist = artistQuery.rows[0];
   
-      const artistQuery = await sql`
+      const albumsQuery = await sql`
           SELECT 
-            artist_id
+            album_id
           FROM album_artists
-          WHERE album_artists.album_id = ${id}  
+          WHERE album_artists.artist_id = ${id}  
         `;
   
-      const artistIds = artistQuery.rows.map((row) => row.artist_id);
+      const albumIds = albumsQuery.rows.map((row) => row.album_id);
   
-      const artistIdsString = `{${artistIds.join(",")}}`;
+      const albumIdsString = `{${albumIds.join(",")}}`;
   
-      const artistNamesQuery = await sql`
+      const albumNamesQuery = await sql`
           SELECT 
             name
-          FROM artists
-          WHERE id = ANY(${artistIdsString});
+          FROM albums
+          WHERE id = ANY(${albumIdsString});
     `;
   
-      const artists = artistNamesQuery.rows.map((row) => row.name);
+      const artists = albumNamesQuery.rows.map((row) => row.name);
   
       return {
-        ...album,
+        ...artist,
         artists,
       };
     } catch (error) {

@@ -27,7 +27,7 @@ export default async function Album({
       <SearchBar searchResults={searchResults}/>
       <Image src={album.cover} alt="album cover" width={300} height={300} />
       <h1>{album.name}</h1>
-      <h1>{artist}</h1>
+      <h2>{artist}</h2>
     </div>
   );
 }
