@@ -186,117 +186,117 @@ export const albums = [
     notes: "no cover",
     price: "20",
     cover: "",
-    genre: "Rock"
+    genres: ["Rock"],
+    artistIds: [13]
   },
   {
     id: 19,
-    artist: "Patsy Cline",
     name: "Always",
     release: "1980",
     notes: "",
     price: "20",
     cover: "/album-covers/Always.png",
-    genre: "Country"
+    genres: ["Country"],
+    artistIds: [14]
   },
   {
     id: 20,
-    artist: "Leonard Cohen",
     name: "Live Songs",
     release: "1973",
     notes: "",
     price: "30",
     cover: "/album-covers/LiveSongs.png",
-    genre: "Folk"
+    genres: ["Folk"],
+    artistIds: [15]
   },
   {
     id: 21,
-    artist: "Ornette Coleman",
     name: "Ornette on Tenor",
     release: "1962",
     notes: "",
     price: "100",
     cover: "/album-covers/Ornette.png",
-    genre: "Jazz"
+    genres: ["Jazz"],
+    artistIds: [16]
   },
   {
     id: 22,
-    artist: "Alice Coltrane",
     name: "Ptah the el Daoud",
     release: "1970",
     notes: "",
     price: "100",
     cover: "/album-covers/Ptah.png",
-    genre: "Jazz"
+    genres: ["Jazz"],
+    artistIds: [17]
   },
   {
     id: 23,
-    artist: "The Cure",
     name: "Kiss Me Kiss Me Kiss Me",
     release: "1987",
     notes: "",
     price: "100",
     cover: "/album-covers/KissMe.png",
-    genre: "Rock"
+    genres: ["Rock", "Pop"],
+    artistIds: [18]
   },
   {
     id: 24,
-    artist: "Dark Mark vs Skeleton Joe",
     name: "Dark Mark vs Skeleton Joe",
     release: "2021",
     notes: "",
     price: "100",
     cover: "/album-covers/DMvSJ",
-    genre: "Experimental"
+    genre: ["Rock"]
   },
   {
     id: 25,
-    artist: "Miles Davis",
     name: "Sketches of Spain",
     release: "1960",
     notes: "",
     price: "100",
     cover: "/album-covers/SketchesOfSpain.png",
-    genre: "Jazz"
+    genres: ["Jazz"],
+    artistIds: [20]
   },
   {
     id: 26,
-    artist: "Miles Davis",
     name: "In a Silent Way",
     release: "1969",
     notes: "",
     price: "100",
     cover: "/album-covers/SilentWay.png",
-    genre: "Jazz"
+    genres: ["Jazz"],
+    artistIds: [20]
   },
   {
     id: 27,
-    artist: "Miles Davis",
     name: "Get Up With It",
     release: "1974",
     notes: "",
     price: "100",
     cover: "/album-covers/GetUp.png",
-    genre: "Jazz"
+    genres: ["Jazz"],
+    artistIds: [20]
   },
   {
     id: 28,
-    artist: "Dead Moon",
     name: "Dead Ahead",
     release: "2004",
     notes: "no cover",
     price: "20",
     cover: "",
-    genre: "Rock"
+    genres: ["Rock"],
+    artistIds: [21]
   },
   {
     id: 29,
-    artist: "Bob Dylan",
     name: "Highway 61 Revisited",
     release: "1965",
     notes: "",
     price: "50",
     cover: "/album-covers/H61.png",
-    genre: "Folk"
+    genres: ["Folk"],
+    artistIds: [22]
   },
   {
     id: 30,
@@ -306,7 +306,8 @@ export const albums = [
     notes: "",
     price: "1000",
     cover: "/album-covers/GreenWorld.png",
-    genre: "Experimental"
+    genres: ["Ambient", "Experimental"],
+    artistIds: [23]
   },
   {
     id: 31,
@@ -316,6 +317,7 @@ export const albums = [
     notes: "",
     price: "50",
     cover: "/album-covers/PossibleMusics.png",
-    genre: "Experimental"
+    genres: ["Ambient", "Experimental"],
+    artistIds: [23, 24]
   },
 ];
