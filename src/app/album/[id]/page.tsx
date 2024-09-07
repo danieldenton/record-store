@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { fetchAlbumById, fetchSearch } from "../../lib/data";
 import SearchBar from "@/app/ui/search-bar";
 import ImageComponent from "@/app/ui/image-component";
@@ -18,8 +19,13 @@ export default async function Album({
   const searchResults = query !== "" ? await fetchSearch(query) : [];
   const id = params.id;
   const album = await fetchAlbumById(id);
-  const artist = album.artists.map((artist) => {
-    return <h1>{artist}</h1>;
+  const artists = album.artists.map((artist) => {
+    console.log(artist)
+    return (
+      <Link href={`/artist/${artist.id}`}>
+        <p>{artist.name}</p>
+      </Link>
+    );
   });
 
   return (
@@ -27,7 +33,7 @@ export default async function Album({
       <SearchBar searchResults={searchResults} />
       <ImageComponent image={album.cover} />
       <h1>{album.name}</h1>
-      {artist}
+      {artists}
     </div>
   );
 }

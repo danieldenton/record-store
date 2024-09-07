@@ -68,18 +68,22 @@ export async function fetchAlbumById(id: string) {
         WHERE album_artists.album_id = ${id}  
       `;
 
-    const albumIds = artistQuery.rows.map((row) => row.artist_id);
+    const artistIds = artistQuery.rows.map((row) => row.artist_id);
 
-    const albumIdsString = `{${albumIds.join(",")}}`;
+    const artistIdsString = `{${artistIds.join(",")}}`;
 
     const artistNamesQuery = await sql`
         SELECT 
+          id,
           name
         FROM artists
-        WHERE id = ANY(${albumIdsString});
+        WHERE id = ANY(${artistIdsString});
   `;
 
-    const artists = artistNamesQuery.rows.map((row) => row.name);
+    const artists = artistNamesQuery.rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+    }));
 
     return {
       ...album,
@@ -127,11 +131,10 @@ export async function fetchArtistById(id: string) {
     `;
 
     const albums = albumNamesQuery.rows.map((row) => ({
-        id: row.id,
-        name: row.name,
-        cover: row.cover
-      }));
-  
+      id: row.id,
+      name: row.name,
+      cover: row.cover,
+    }));
 
     return {
       ...artist,
