@@ -30,8 +30,3 @@ export type ArtistSearchResult = {
 }
 
 export type SearchResult = AlbumSearchResult | ArtistSearchResult
-
-export type AlbumsOnArtistPage = {
-  name: string
-  cover: string
-}

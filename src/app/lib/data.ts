@@ -4,7 +4,6 @@ import {
   AlbumSearchResult,
   Album,
   Artist,
-  AlbumsOnArtistPage
 } from "./definitions";
 
 export async function fetchSearch(query: string) {
@@ -120,13 +119,15 @@ export async function fetchArtistById(id: string) {
 
     const albumNamesQuery = await sql`
           SELECT 
+            id,
             name,
             cover
           FROM albums
           WHERE id = ANY(${albumIdsString});
     `;
 
-    const albums: AlbumsOnArtistPage[] = albumNamesQuery.rows.map((row) => ({
+    const albums = albumNamesQuery.rows.map((row) => ({
+        id: row.id,
         name: row.name,
         cover: row.cover
       }));
