@@ -21,7 +21,7 @@ export default function Search() {
   }, 300);
 
   return (
-    <div className="mx-auto">
+    <div className="mx-auto mb-1">
       <label htmlFor="search" className="sr-only">
         Search
       </label>
