@@ -7,15 +7,7 @@ export const metadata: Metadata = {
   title: "Album",
 };
 
-export default async function Album({
-  params,
-  searchParams,
-}: {
-  params: { id: string };
-  searchParams?: { query?: string };
-}) {
-  const query = searchParams?.query || "";
-  const searchResults = query !== "" ? await fetchSearch(query) : [];
+export default async function Album({ params }: { params: { id: string } }) {
   const id = params.id;
   const album = await fetchAlbumById(id);
 
