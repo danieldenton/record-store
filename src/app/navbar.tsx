@@ -1,31 +1,49 @@
-
 import Link from "next/link";
 import { ShoppingCartIcon, HomeIcon } from "@heroicons/react/24/outline";
 import {
   RegisterLink,
   LoginLink,
+  LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Search from "./components/search";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
   return (
-    <div className="h-[80px] w-full flex justify-between mx-auto">
+    <div className="w-full flex felx-wrap justify-between mx-auto mb-10 pt-10">
       <div className="h-full w-full pl-11 flex items-end justify-between">
         <Link href="/">
-          <HomeIcon className="h-8" />
+          <HomeIcon className="h-10" />
         </Link>
         <Search />
       </div>
-      <div className="h-full w-1/4 pr-11 flex justify-around items-end">
+      <div className="h-full pr-11 w-1/4 flex justify-around items-end">
         <Link href="/cart" className="mr-3">
-          <ShoppingCartIcon className="h-8" />
+          <ShoppingCartIcon className="h-10" />
         </Link>
-        <LoginLink className="bg-slate-50 text-black py-2 px-4 rounded ">
-          Sign in
-        </LoginLink>
-        <RegisterLink className="bg-slate-50 text-black py-2 px-4 rounded">
-          Sign up
-        </RegisterLink>
+        {user ? (
+          <>
+            <div className="flex flex-col mr-2">
+              <p className="flex justify-end text-xs">Logged in as:</p>
+              <p className="flex justify-center">{user.given_name}</p>
+            </div>
+            <LogoutLink className="bg-slate-50 text-black py-2 px-4 rounded w-15">
+              Log out
+            </LogoutLink>
+          </>
+        ) : (
+          <>
+            <LoginLink className="bg-slate-50 text-black py-2 px-4 rounded ">
+              Sign in
+            </LoginLink>
+            <RegisterLink className="bg-slate-50 text-black py-2 px-4 rounded">
+              Sign up
+            </RegisterLink>
+          </>
+        )}
       </div>
     </div>
   );
