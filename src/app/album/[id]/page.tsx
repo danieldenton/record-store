@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { fetchAlbumById, fetchSearch } from "../../lib/data";
+import { fetchAlbumById } from "../../lib/data";
 import ImageComponent from "@/app/ui/image-component";
 import ArtistNameLink from "@/app/ui/artist-name-link";
 
