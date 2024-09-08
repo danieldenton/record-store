@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { fetchArtistById, fetchSearch } from "../../lib/data";
-import ImageComponent from "@/app/ui/image-component";
-import AlbumNameLinks from "@/app/ui/album-name-link";
+import ImageComponent from "@/app/components/image-component";
+import AlbumNameLinks from "@/app/components/album-name-link";
 
 export const metadata: Metadata = {
   title: "Artist",
