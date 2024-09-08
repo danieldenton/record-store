@@ -8,7 +8,7 @@ export default function SearchBar({
     searchResults: SearchResult[];
   }) {
     return (
-  <div className="flex flex-col py-[50px] border w-full">
+  <div className="flex flex-col py-[50px] w-full bg-slate-50">
     <Search />
     <SearchResults searchResults={searchResults}/>
   </div>

@@ -22,7 +22,7 @@ export default async function Artist({
   const image = artist.image ? artist.image : artist.albums[0].cover || "";
 
   return (
-    <div className="w-full flex flex-col items-center align center">
+    <div className="w-full flex flex-col items-center align-center">
       <SearchBar searchResults={searchResults} />
       <ImageComponent image={image} />
       <h1>{artist.name}</h1>
