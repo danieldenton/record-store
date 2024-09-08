@@ -2,7 +2,6 @@ import { fetchSearch } from "./lib/data";
 import MaxWidthWrapper from "./components/max-width-wrapper";
 
 export default async function Home() {
-  
   return (
     <div className="flex flex-col justify-center">
       <section>
