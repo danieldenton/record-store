@@ -4,7 +4,7 @@ import {
   RegisterLink,
   LoginLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
-import Search from "./search";
+import Search from "./ui/search";
 
 export default function Navbar() {
   return (

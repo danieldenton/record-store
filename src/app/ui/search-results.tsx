@@ -1,13 +1,15 @@
-'use client'
+"use client";
 
-import { SearchResult } from "../lib/definitions";
 import Link from "next/link";
+import { fetchSearch } from "../lib/data";
 
-export default function SearchResults({
-  searchResults,
+export default async function SearchResults({
+  searchParams,
 }: {
-  searchResults: SearchResult[];
+  searchParams?: { query?: string };
 }) {
+  const query = searchParams?.query || "";
+  const searchResults = query !== "" ? await fetchSearch(query) : [];
 
   return (
     <div className="bg-secondary">

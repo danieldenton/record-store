@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { fetchArtistById, fetchSearch } from "../../lib/data";
-import SearchBar from "@/app/ui/search-bar";
 import ImageComponent from "@/app/ui/image-component";
 import AlbumNameLinks from "@/app/ui/album-name-link";
 
@@ -23,7 +22,6 @@ export default async function Artist({
 
   return (
     <div className="w-full flex flex-col items-center align-center">
-      <SearchBar searchResults={searchResults} />
       <ImageComponent image={image} />
       <h1>{artist.name}</h1>
       <AlbumNameLinks albums={artist.albums} />
