@@ -30,16 +30,16 @@ export default async function Navbar() {
               <p className="flex justify-end text-[13px]">Logged in as:</p>
               <p className="flex justify-center">{user.given_name}</p>
             </div>
-            <LogoutLink className="bg-slate-50 text-black py-2 px-4 rounded w-15 m-1">
+            <LogoutLink className="flex justify-center bg-slate-50 text-black py-2 rounded w-15 m-1 min-w-[75px]">
               Log out
             </LogoutLink>
           </>
         ) : (
           <>
-            <LoginLink className="bg-slate-50 text-black py-2 px-4 rounded m-1">
+            <LoginLink className="flex justify-center bg-slate-50 text-black py-2 rounded m-1 min-w-[75px]">
               Sign in
             </LoginLink>
-            <RegisterLink className="bg-slate-50 text-black py-2 px-4 rounded m-1">
+            <RegisterLink className="flex justify-center bg-slate-50 text-black py-2 rounded m-1 min-w-[75px]">
               Sign up
             </RegisterLink>
           </>
