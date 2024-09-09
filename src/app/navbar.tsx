@@ -13,7 +13,7 @@ export default async function Navbar() {
   const user = await getUser();
 
   return (
-    <div className="w-full flex h-[100px] justify-between mx-auto mb-10 border">
+    <div className="w-full flex h-[80px] justify-between mx-auto mb-10 border">
       <div className="h-full w-full pl-11 flex items-end justify-between">
         <Link href="/">
           <HomeIcon className="h-10" />
@@ -30,16 +30,16 @@ export default async function Navbar() {
               <p className="flex justify-end text-[13px]">Logged in as:</p>
               <p className="flex justify-center">{user.given_name}</p>
             </div>
-            <LogoutLink className="bg-slate-50 text-black py-2 px-4 rounded w-15 mb-1">
+            <LogoutLink className="bg-slate-50 text-black py-2 px-4 rounded w-15 m-1">
               Log out
             </LogoutLink>
           </>
         ) : (
           <>
-            <LoginLink className="bg-slate-50 text-black py-2 px-4 rounded mb-1">
+            <LoginLink className="bg-slate-50 text-black py-2 px-4 rounded m-1">
               Sign in
             </LoginLink>
-            <RegisterLink className="bg-slate-50 text-black py-2 px-4 rounded mb-1">
+            <RegisterLink className="bg-slate-50 text-black py-2 px-4 rounded m-1">
               Sign up
             </RegisterLink>
           </>
