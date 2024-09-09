@@ -1,11 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { SearchResult } from "../lib/definitions";
 
-export default function SearchResults() {
+export default function SearchResults({
+  searchResults,
+}: {
+  searchResults: SearchResult[];
+}) {
   return (
-    <div className="bg-secondary">
-      {/* {searchResults.map((result) => (
+    <div className="relaitve">
+      <div className="absolute z-10 bg-slate-50 text-black">
+        {searchResults.map((result) => (
           <div>
             <Link
               href={`/${result.type}/${result.id}`}
@@ -17,7 +23,8 @@ export default function SearchResults() {
               </p>
             </Link>
           </div>
-        ))} */}
+        ))}
+      </div>
     </div>
   );
 }

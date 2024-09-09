@@ -3,8 +3,14 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+import { SearchResult } from "../lib/definitions";
+import SearchResults from "./search-results";
 
-export default function Search() {
+export default function Search({
+  searchResults,
+}: {
+  searchResults: SearchResult[];
+}) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -21,7 +27,7 @@ export default function Search() {
   }, 300);
 
   return (
-    <div className="mx-auto mb-1">
+    <div className="mx-auto mb-1 flex flex-col">
       <label htmlFor="search" className="sr-only">
         Search
       </label>
@@ -36,6 +42,7 @@ export default function Search() {
         />
         <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-black peer-focus:text-gray-900" />
       </div>
+      <SearchResults searchResults={searchResults} />
     </div>
   );
 }

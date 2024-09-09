@@ -6,19 +6,24 @@ import {
   LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import Search from "./components/search";
+import Search from "./search";
+import { SearchResult } from "../lib/definitions";
 
-export default async function Navbar() {
+export default async function Navbar({
+  searchResults,
+}: {
+  searchResults: SearchResult[];
+}) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
   return (
-    <div className="w-full flex h-[70px] justify-between mx-auto mb-10">
+    <div className="w-full flex h-[70px] justify-between  mx-auto mb-10">
       <div className="h-full w-full pl-11 flex items-end justify-between">
         <Link href="/">
           <HomeIcon className="h-10" />
         </Link>
-        <Search />
+        <Search searchResults={searchResults} />
       </div>
       <div className="h-full pr-11 w-1/4 flex justify-around items-end">
         <Link href="/cart" className="mr-1">
@@ -30,16 +35,16 @@ export default async function Navbar() {
               <p className="flex justify-end text-[13px]">Logged in as:</p>
               <p className="flex justify-center">{user.given_name}</p>
             </div>
-            <LogoutLink className="flex justify-center bg-slate-50 text-black py-2 rounded w-15 m-1 min-w-[75px]">
+            <LogoutLink className="flex justify-center bg-slate-50 text-black py-2 rounded w-15 mx-1 mb-1 min-w-[75px]">
               Log out
             </LogoutLink>
           </>
         ) : (
           <>
-            <LoginLink className="flex justify-center bg-slate-50 text-black py-2 rounded m-1 min-w-[75px]">
+            <LoginLink className="flex justify-center bg-slate-50 text-black py-2 rounded mx-1 mb-1 min-w-[75px]">
               Sign in
             </LoginLink>
-            <RegisterLink className="flex justify-center bg-slate-50 text-black py-2 rounded m-1 min-w-[75px]">
+            <RegisterLink className="flex justify-center bg-slate-50 text-black py-2 rounded mx-1 mb-1 min-w-[75px]">
               Sign up
             </RegisterLink>
           </>

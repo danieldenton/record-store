@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Navbar from "../navbar";
+import Navbar from "../components/navbar";
 import { fetchSearch } from "../lib/data";
 
 export const metadata: Metadata = {

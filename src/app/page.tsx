@@ -1,4 +1,4 @@
-import Navbar from "./navbar";
+import Navbar from "./components/navbar";
 import { fetchSearch } from "./lib/data";
 
 export default async function Home({
@@ -10,7 +10,7 @@ export default async function Home({
   const searchResults = query !== "" ? await fetchSearch(query) : [];
   return (
     <div className="flex flex-col justify-center">
-       <Navbar />
+       <Navbar searchResults={searchResults} />
       <h1 className="flex justify-center">Home Page</h1>
     </div>
   );
