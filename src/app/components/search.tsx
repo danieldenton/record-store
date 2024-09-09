@@ -27,7 +27,7 @@ export default function Search() {
       </label>
       <div className="relative rounded">
         <input
-          className="w-[777px] rounded-md py-[9px] pl-10 text-black focus:outline-none"
+          className="w-[666px] rounded-md py-[9px] pl-10 text-black focus:outline-none"
           placeholder="Search for an album or artist here"
           onChange={(e) => {
             handleSearch(e.target.value);

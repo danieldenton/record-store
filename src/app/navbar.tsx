@@ -13,7 +13,7 @@ export default async function Navbar() {
   const user = await getUser();
 
   return (
-    <div className="w-full flex h-[100px] justify-between mx-auto mb-10 pt-10">
+    <div className="w-full flex h-[100px] justify-between mx-auto mb-10 border">
       <div className="h-full w-full pl-11 flex items-end justify-between">
         <Link href="/">
           <HomeIcon className="h-10" />
