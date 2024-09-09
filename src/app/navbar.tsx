@@ -13,7 +13,7 @@ export default async function Navbar() {
   const user = await getUser();
 
   return (
-    <div className="w-full flex h-[80px] justify-between mx-auto mb-10 border">
+    <div className="w-full flex h-[70px] justify-between mx-auto mb-10">
       <div className="h-full w-full pl-11 flex items-end justify-between">
         <Link href="/">
           <HomeIcon className="h-10" />
@@ -21,12 +21,12 @@ export default async function Navbar() {
         <Search />
       </div>
       <div className="h-full pr-11 w-1/4 flex justify-around items-end">
-        <Link href="/cart" className="mr-3">
+        <Link href="/cart" className="mr-1">
           <ShoppingCartIcon className="h-10" />
         </Link>
         {user ? (
           <>
-            <div className="flex flex-col mr-2">
+            <div className="flex flex-col mr-1 min-w-[88px]">
               <p className="flex justify-end text-[13px]">Logged in as:</p>
               <p className="flex justify-center">{user.given_name}</p>
             </div>

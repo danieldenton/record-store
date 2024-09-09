@@ -8,7 +8,6 @@ export default async function Home({
 }) {
   const query = searchParams?.query || "";
   const searchResults = query !== "" ? await fetchSearch(query) : [];
-  console.log(searchResults)
   return (
     <div className="flex flex-col justify-center">
        <Navbar />
