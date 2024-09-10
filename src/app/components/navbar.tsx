@@ -16,7 +16,7 @@ export default async function Navbar({
 }) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-
+console.log(user)
   return (
     <div className="w-full flex h-[70px] justify-between  mx-auto mb-10">
       <div className="h-full w-full pl-11 flex items-end justify-between">
