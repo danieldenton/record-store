@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { User } from "./definitions";
 
-async function postUser(user: {
+export async function postUser(user: {
   id: string;
   email: string;
   given_name: string;
@@ -27,7 +27,7 @@ async function postUser(user: {
   }
 }
 
-async function getUser(user: {
+export async function getUser(user: {
   id: string;
   email: string;
   given_name: string;
