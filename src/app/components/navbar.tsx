@@ -7,6 +7,7 @@ import {
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Search from "./search";
+import LoggedInAs from "./logged-in-as";
 import { SearchResult } from "../lib/definitions";
 
 export default async function Navbar({
@@ -15,8 +16,8 @@ export default async function Navbar({
   searchResults: SearchResult[];
 }) {
   const { getUser } = getKindeServerSession();
-  const user = await getUser();
-console.log(user)
+  const kindeUser = await getUser();
+ 
   return (
     <div className="w-full flex h-[70px] justify-between  mx-auto mb-10">
       <div className="h-full w-full pl-11 flex items-end justify-between">
@@ -29,12 +30,9 @@ console.log(user)
         <Link href="/cart" className="mr-1">
           <ShoppingCartIcon className="h-10" />
         </Link>
-        {user ? (
+        {kindeUser ? (
           <>
-            <div className="flex flex-col mr-1 min-w-[88px]">
-              <p className="flex justify-end text-[13px]">Logged in as:</p>
-              <p className="flex justify-center">{user.given_name}</p>
-            </div>
+            <LoggedInAs kindeUser={kindeUser}/>
             <LogoutLink className="flex justify-center bg-slate-50 text-black py-2 rounded w-15 mx-1 mb-1 min-w-[75px]">
               Log out
             </LogoutLink>

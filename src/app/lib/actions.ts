@@ -4,7 +4,6 @@ import { z } from "zod";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { User } from "./definitions";
 
 export async function postUser(user: {
   id: string;
@@ -14,7 +13,7 @@ export async function postUser(user: {
   cart: number[];
 }) {
   try {
-    const response = await sql<User[]>`
+    const response = await sql`
           INSERT INTO users (user_id, email, first_name, last_name, cart)
           VALUES (${user.id}, ${user.email}, ${user.given_name}, ${user.family_name})
           RETURNING *;
@@ -27,15 +26,9 @@ export async function postUser(user: {
   }
 }
 
-export async function getUser(user: {
-  id: string;
-  email: string;
-  given_name: string;
-  family_name: string;
-  cart: number[];
-}) {
+export async function getUserFromDB(user: any) {
   try {
-    const existingUserQuery = await sql<User[]>`
+    const existingUserQuery = await sql`
         SELECT * FROM users WHERE user_id = ${user.id};
       `;
 
