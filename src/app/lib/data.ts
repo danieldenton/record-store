@@ -1,9 +1,5 @@
 import { sql } from "@vercel/postgres";
-import {
-  SearchResult,
-  Album,
-  Artist,
-} from "./definitions";
+import { SearchResult, Album, Artist } from "./definitions";
 
 export async function fetchSearch(query: string) {
   try {
@@ -37,7 +33,13 @@ export async function fetchSearch(query: string) {
     ];
 
     if (combinedResults.length === 0) {
-      combinedResults = [{ id: null, name: "We can't find anything that matches your search...", type: null}]
+      combinedResults = [
+        {
+          id: null,
+          name: "We can't find anything that matches your search...",
+          type: null,
+        },
+      ];
     }
 
     return combinedResults;
@@ -86,7 +88,7 @@ export async function fetchAlbumById(id: string) {
     const artists = artistNamesQuery.rows.map((row) => ({
       id: row.id,
       name: row.name,
-      image: row.image
+      image: row.image,
     }));
 
     return {
@@ -152,53 +154,49 @@ export async function fetchArtistById(id: string) {
 
 export async function fetchAlbumsByIds(ids: number[]) {
   try {
+    const idsString = ids.join(",");
     const albumQuery = await sql<Album>`
         SELECT
           id,
           name,
-          release,
-          notes,
           price,
           cover,
-          genres
         FROM albums  
-        WHERE albums.id = ${id};
+        WHERE albums.id = ANY(${idsString})
       `;
 
-    const album = albumQuery.rows[0];
+    const albumResults = albumQuery.rows;
 
-    const artistQuery = await sql`
+    const albumsWithArtists = await Promise.all(
+      albumResults.map(async (album) => {
+        const artistQuery = await sql`
         SELECT 
           artist_id
         FROM album_artists
-        WHERE album_artists.album_id = ${id}  
+        WHERE album_artists.album_id = ${album.id}  
       `;
 
-    const artistIds = artistQuery.rows.map((row) => row.artist_id);
+        const artistIds = artistQuery.rows.map((row) => row.artist_id);
 
-    const artistIdsString = `{${artistIds.join(",")}}`;
+        const artistIdsString = `{${artistIds.join(",")}}`;
 
-    const artistNamesQuery = await sql`
+        const artistNamesQuery = await sql`
         SELECT 
-          id,
           name,
-          image
         FROM artists
         WHERE id = ANY(${artistIdsString});
   `;
 
-    const artists = artistNamesQuery.rows.map((row) => ({
-      id: row.id,
-      name: row.name,
-      image: row.image
-    }));
+        const artists = artistNamesQuery.rows.map((row) => row.name);
 
-    return {
-      ...album,
-      artists,
-    };
+        return {
+          ...album,
+          artists,
+        };
+      })
+    );
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch album.");
+    throw new Error("Failed to fetch albums.");
   }
 }
