@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image";
 import { useCartContext } from "@/context/cart";
 
@@ -10,6 +12,7 @@ type CartAlbum = {
 
 export default function CartAlbumComponent({ album }: { album: CartAlbum }) {
   const { cart, setCart } = useCartContext();
+  console.log(album)
   return (
     <div className="flex items-center m-1">
       <Image src={album.cover} alt={album.name} height={50} width={50} />

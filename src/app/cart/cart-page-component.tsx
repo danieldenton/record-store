@@ -1,13 +1,10 @@
-import { fetchAlbumsByIds } from "../lib/data";
 import CartAlbumComponent from "./cart-album-component";
+import { Album } from "../lib/definitions";
 
-type Cart = number[];
-
-export default async function CartPageComponent({ cart }: { cart: Cart }) {
-    const albumsToBePurchased = await fetchAlbumsByIds(cart);
-    const cartItems = albumsToBePurchased.map((item) => {
-      return <CartAlbumComponent album={item} />;
-    });
-
-    return  <>{cartItems}</>
+export default function CartPageComponent({ cart }: { cart: Album[] }) {
+  const cartItems = cart.map((item) => {
+    console.log(item)
+    return <CartAlbumComponent album={item} />;
+  });
+  return <>{cartItems}</>;
 }

@@ -152,17 +152,17 @@ export async function fetchArtistById(id: string) {
   }
 }
 
-export async function fetchAlbumsByIds(ids: number[]) {
+export async function fetchAlbumsByIds(ids: string) {
   try {
-    const idsString = ids.join(",");
+
     const albumQuery = await sql<Album>`
         SELECT
           id,
           name,
           price,
-          cover,
+          cover
         FROM albums  
-        WHERE albums.id = ANY(${idsString})
+        WHERE albums.id = ANY(${ids})
       `;
 
     const albumResults = albumQuery.rows;
@@ -182,7 +182,7 @@ export async function fetchAlbumsByIds(ids: number[]) {
 
         const artistNamesQuery = await sql`
         SELECT 
-          name,
+          name
         FROM artists
         WHERE id = ANY(${artistIdsString});
   `;
