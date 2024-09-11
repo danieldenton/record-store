@@ -6,7 +6,6 @@ export type Album = {
   price: string;
   cover: string;
   genres: string[];
-  artistIds: number[];
 };
 
 export type Artist = {
