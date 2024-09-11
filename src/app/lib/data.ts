@@ -27,12 +27,12 @@ export async function fetchSearch(query: string) {
       ...albumResults.rows.map((row: SearchResult) => ({
         id: row.id,
         name: row.name,
-        type: "album",
+        type: "album" as const,
       })),
       ...artistResults.rows.map((row: SearchResult) => ({
         id: row.id,
         name: row.name,
-        type: "artist",
+        type: "artist" as const,
       })),
     ];
 
