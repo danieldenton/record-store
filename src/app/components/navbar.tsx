@@ -1,21 +1,22 @@
 import Link from "next/link";
-import { ShoppingCartIcon, HomeIcon } from "@heroicons/react/24/outline";
+import { HomeIcon } from "@heroicons/react/24/outline";
 import {
   RegisterLink,
   LoginLink,
   LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import Search from "./search";
+import CartComponent from "./cart-component";
 import LoggedInAs from "./logged-in-as";
 import { SearchResult } from "../lib/definitions";
-import { getUserWrapperFunction} from "../lib/actions";
+import { getUserWrapperFunction } from "../lib/actions";
 
 export default async function Navbar({
   searchResults,
 }: {
   searchResults: SearchResult[];
 }) {
-  const user = await getUserWrapperFunction()
+  const user = await getUserWrapperFunction();
   return (
     <div className="w-full flex h-[70px] justify-between  mx-auto mb-10">
       <div className="h-full w-full pl-11 flex items-end justify-between">
@@ -25,9 +26,8 @@ export default async function Navbar({
         <Search searchResults={searchResults} />
       </div>
       <div className="h-full pr-11 w-1/4 flex justify-around items-end">
-        <Link href="/cart" className="mr-1">
-          <ShoppingCartIcon className="h-10" />
-        </Link>
+        <CartComponent />
+
         {user ? (
           <>
             <LoggedInAs firstName={user.first_name} />
