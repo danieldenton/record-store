@@ -2,26 +2,25 @@
 
 import React, { createContext, useContext, useState } from "react";
 
-type Context = {};
+export const CartContext = createContext(null);
 
-const AppContext = createContext<Context>({});
-
-export function AppWrapper({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState({
-    id: null,
-    authId: "kp_82c38a240aa04155a06651c3d5788518",
-    email: "danieldentondev@gmail.com'",
-    firstName: "Daniel",
-    lastName: "Denton",
-    cart: [],
-  });
+export default function CartContextProvider({ children }: { children: React.ReactNode }) {
+  // const [user, setUser] = useState({
+  //   id: null,
+  //   user_id: "",
+  //   email: "danieldentondev@gmail.com'",
+  //   first_name: "",
+  //   last_name: "",
+  //   cart: [],
+  // });
+  const [cart, setCart] = useState([])
   return (
-    <AppContext.Provider value={{ user, setUser }}>
+    <CartContext.Provider value={{ cart, setCart }}>
       {children}
-    </AppContext.Provider>
+    </CartContext.Provider>
   );
 }
 
-export function useAppContext() {
-  return useContext(AppContext);
+export function useCartContext() {
+  return useContext(CartContext);
 }
