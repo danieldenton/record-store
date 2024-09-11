@@ -1,14 +1,14 @@
 import { sql } from "@vercel/postgres";
 import {
-  ArtistSearchResult,
-  AlbumSearchResult,
+  SearchResult,
   Album,
   Artist,
 } from "./definitions";
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
 
 export async function fetchSearch(query: string) {
   try {
-    const albumResults = await sql<AlbumSearchResult>`
+    const albumResults = await sql<SearchResult>`
         SELECT
           albums.id,
           albums.name
@@ -16,7 +16,7 @@ export async function fetchSearch(query: string) {
         WHERE albums.name ILIKE ${`%${query}%`}
       `;
 
-    const artistResults = await sql<ArtistSearchResult>`
+    const artistResults = await sql<SearchResult>`
         SELECT
           artists.id,
           artists.name
@@ -24,18 +24,22 @@ export async function fetchSearch(query: string) {
         WHERE artists.name ILIKE ${`%${query}%`}
       `;
 
-    const combinedResults = [
-      ...albumResults.rows.map((row: AlbumSearchResult) => ({
+    let combinedResults: SearchResult[] = [
+      ...albumResults.rows.map((row: SearchResult) => ({
         id: row.id,
         name: row.name,
         type: "album",
       })),
-      ...artistResults.rows.map((row: ArtistSearchResult) => ({
+      ...artistResults.rows.map((row: SearchResult) => ({
         id: row.id,
         name: row.name,
         type: "artist",
       })),
     ];
+
+    if (combinedResults.length === 0) {
+      combinedResults = [{ id: null, name: "We can't find anything that matches your search...", type: null}]
+    }
 
     return combinedResults;
   } catch (error) {

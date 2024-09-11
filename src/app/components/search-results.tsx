@@ -9,18 +9,16 @@ export default function SearchResults({
   searchResults: SearchResult[];
 }) {
   return (
-    <div className="relaitve">
-      <div className="absolute z-10 bg-slate-50 text-black">
+    <div className="relative">
+      <div className="absolute z-10 bg-slate-50 text-black w-[666px]">
         {searchResults.map((result) => (
-          <div>
+          <div key={`${result.type}${result.id}`}>
             <Link
               href={`/${result.type}/${result.id}`}
-              className="flex flex-row text-primary hover:bg-popover"
+              className="flex flex-row text-primary hover:bg-yellow"
             >
               <p>{result.name}</p>
-              <p className="text-destructive text-sm ml-2 mt-0.5">
-                {result.type}
-              </p>
+              <p className="text-red text-sm ml-2 mt-0.5">{result.type}</p>
             </Link>
           </div>
         ))}

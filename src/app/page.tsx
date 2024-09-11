@@ -11,7 +11,7 @@ export default async function Home({
 
   return (
     <div className="flex flex-col justify-center">
-       <Navbar searchResults={searchResults} />
+      <Navbar searchResults={searchResults} />
       <h1 className="flex justify-center">Home</h1>
     </div>
   );

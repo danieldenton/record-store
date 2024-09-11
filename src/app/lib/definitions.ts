@@ -9,12 +9,6 @@ export type Album = {
   artistIds: number[];
 };
 
-export type AlbumSearchResult = {
-  id: number;
-  name: string;
-  type: string;
-};
-
 export type Artist = {
   id: number;
   name: string;
@@ -23,13 +17,11 @@ export type Artist = {
   genres: string[];
 };
 
-export type ArtistSearchResult = {
-  id: number;
+export type SearchResult = {
+  id: number | null;
   name: string;
-  type: string;
+  type: string | null;
 };
-
-export type SearchResult = AlbumSearchResult | ArtistSearchResult;
 
 export type User = {
   id: number;

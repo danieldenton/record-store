@@ -7,8 +7,9 @@ import {
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import Search from "./search";
 import LoggedInAs from "./logged-in-as";
-import { SearchResult, User } from "../lib/definitions";
+import { SearchResult } from "../lib/definitions";
 import { getUserWrapperFunction} from "../lib/actions";
+import SearchResults from "./search-results";
 
 export default async function Navbar({
   searchResults,
