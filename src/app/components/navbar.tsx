@@ -9,7 +9,6 @@ import Search from "./search";
 import LoggedInAs from "./logged-in-as";
 import { SearchResult } from "../lib/definitions";
 import { getUserWrapperFunction} from "../lib/actions";
-import SearchResults from "./search-results";
 
 export default async function Navbar({
   searchResults,
