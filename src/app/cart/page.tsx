@@ -14,5 +14,10 @@ export default async function Cart({
 }) {
   const query = searchParams?.query || "";
   const searchResults = query !== "" ? await fetchSearch(query) : [];
-  return <h1>Cart Page</h1>;
+  return (
+    <div className="w-full flex flex-col items-center align-center">
+      <Navbar searchResults={searchResults} />
+      <h1>CART PAGE</h1>
+    </div>
+  )
 }
