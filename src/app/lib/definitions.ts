@@ -29,3 +29,11 @@ export type User = {
   first_name: string;
   last_name: string;
 };
+
+export type CartAlbum = {
+  id: number;
+  name: string;
+  cover: string;
+  price: string;
+  artists: string[]
+};

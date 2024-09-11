@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Navbar from "../components/navbar";
 import { fetchSearch, fetchAlbumsByIds } from "../lib/data";
-import CartPageComponent from "./cart-album-component";
+import CartPageComponent from "./cart-page-component"
 
 export const metadata: Metadata = {
   title: "Cart",
@@ -15,14 +15,14 @@ export default async function Cart({
   const query = searchParams?.query || "";
   const cartQuery = searchParams?.cart || "";
   const searchResults = query !== "" ? await fetchSearch(query) : [];
-  const cart = cartQuery.split(",").filter(Boolean);
-  const formattedCart = `{${cart.join(",")}}`;
+  const cartArray = cartQuery.split(",").filter(Boolean);
+  const formattedCart = `{${cartArray.join(",")}}`;
   const albums = await fetchAlbumsByIds(formattedCart);
-console.log(albums)
+
   return (
     <div className="w-full flex flex-col items-center align-center">
       <Navbar searchResults={searchResults} />
-      <CartPageComponent cart={albums} />
+      <CartPageComponent albums={albums} />
     </div>
   );
 }
