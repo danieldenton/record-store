@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { fetchArtistById, fetchSearch } from "../../lib/data";
 import Navbar from "@/app/components/navbar";
+import ArtistAlbumPageTitle from "@/app/components/artist-album-page-title";
 import ImageComponent from "@/app/components/image-component";
 import AlbumNameLinks from "@/app/components/album-name-link";
 
@@ -24,8 +25,10 @@ export default async function Artist({
   return (
     <div className="w-full flex flex-col items-center align-center">
       <Navbar searchResults={searchResults} />
-      <ImageComponent image={image} />
-      <h1>{artist.name}</h1>
+      <div className="flex flex-col justify-center">
+        <ArtistAlbumPageTitle name={artist.name} />
+        <ImageComponent image={image} />
+      </div>
       <AlbumNameLinks albums={artist.albums} />
     </div>
   );
