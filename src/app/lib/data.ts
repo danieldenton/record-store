@@ -195,6 +195,8 @@ export async function fetchAlbumsByIds(ids: number[]) {
         };
       })
     );
+
+    return albumsWithArtists;
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch albums.");
