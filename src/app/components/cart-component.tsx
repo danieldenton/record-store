@@ -5,7 +5,7 @@ import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useCartContext } from "@/context/cart";
 export default function CartComponent() {
   const { cart } = useCartContext();
-
+const numberOfCartItems = cart.length
   return (
     <Link href="/cart" className="mr-1">
       <div></div>

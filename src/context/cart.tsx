@@ -22,6 +22,10 @@ export default function CartContextProvider({
   );
 }
 
-export function useCartContext() {
-  return useContext(CartContext);
-}
+export const useCartContext = () => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("useCartContext must be used within a CartContextProvider");
+  }
+  return context;
+};

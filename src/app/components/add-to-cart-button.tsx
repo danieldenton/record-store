@@ -1,6 +1,6 @@
 'use client'
 
-import { useCartContext } from "@/context/cart";";
+import { useCartContext } from "@/context/cart";
 
 export default function AddToCartButton({ albumId }: { albumId: number }) {
   const { setCart, cart } = useCartContext();

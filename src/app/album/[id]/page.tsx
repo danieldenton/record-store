@@ -4,6 +4,7 @@ import Navbar from "@/app/components/navbar";
 import ArtistAlbumPageTitle from "@/app/components/artist-album-page-title";
 import ImageComponent from "@/app/components/image-component";
 import ArtistNameLink from "@/app/components/artist-name-link";
+import AddToCartButton from "@/app/components/add-to-cart-button";
 
 export const metadata: Metadata = {
   title: "Album",
@@ -27,6 +28,7 @@ export default async function Album({
       <ArtistAlbumPageTitle name={album.name} />
       <ImageComponent image={album.cover} />
       <ArtistNameLink artists={album.artists} />
+      <AddToCartButton albumId={album.id} />
     </div>
   );
 }
