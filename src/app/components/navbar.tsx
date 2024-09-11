@@ -6,7 +6,7 @@ import {
   LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import Search from "./search";
-import CartComponent from "./cart-component";
+import ShoppingCartComponent from "./shopping-cart-component";
 import LoggedInAs from "./logged-in-as";
 import { SearchResult } from "../lib/definitions";
 import { getUserWrapperFunction } from "../lib/actions";
@@ -26,7 +26,7 @@ export default async function Navbar({
         <Search searchResults={searchResults} />
       </div>
       <div className="h-full pr-11 w-1/4 flex justify-around items-end">
-        <CartComponent />
+        <ShoppingCartComponent />
 
         {user ? (
           <>

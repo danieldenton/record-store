@@ -1,9 +1,7 @@
 import { Metadata } from "next";
 import Navbar from "../components/navbar";
-import { fetchSearch, fetchAlbumsByIds } from "../lib/data";
-import { useCartContext } from "@/context/cart";
-import CartAlbumComponent from "../components/cart-album-component";
-
+import { fetchSearch } from "../lib/data";
+import CartPageClientComponent from "./cart-page-client-component";
 export const metadata: Metadata = {
   title: "Cart",
 };
@@ -15,15 +13,12 @@ export default async function Cart({
 }) {
   const query = searchParams?.query || "";
   const searchResults = query !== "" ? await fetchSearch(query) : [];
-  const { cart } = useCartContext();
-  const albumsToBePurchased = await fetchAlbumsByIds(cart);
-  const cartItems = albumsToBePurchased.map((item) => {
-    return <CartAlbumComponent album={item} />;
-  });
+  
+ 
   return (
     <div className="w-full flex flex-col items-center align-center">
       <Navbar searchResults={searchResults} />
-      <h1>CART PAGE</h1>
+      <CartPageClientComponent />
     </div>
   );
 }
