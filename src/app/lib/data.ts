@@ -4,7 +4,6 @@ import {
   Album,
   Artist,
 } from "./definitions";
-import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
 
 export async function fetchSearch(query: string) {
   try {
