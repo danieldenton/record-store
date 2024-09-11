@@ -20,7 +20,7 @@ export type Artist = {
 export type SearchResult = {
   id: number | null;
   name: string;
-  type: string | null;
+  type: "album" | "artist" | null;
 };
 
 export type User = {
