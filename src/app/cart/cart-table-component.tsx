@@ -11,9 +11,6 @@ export default function CartTableComponent({
     return <CartAlbumComponent album={item} />;
   });
 
-  const totalPrice = albums.reduce((total, album) => {
-    return total + parseFloat(album.price);
-  }, 0);
   return (
     <>
       <table className="w-full border">
@@ -27,7 +24,7 @@ export default function CartTableComponent({
           </tr>
         </thead>
         <tbody>{cartItems}</tbody>
-        <Subtotal albums={albums}/>
+        <Subtotal albums={albums} />
       </table>
     </>
   );
