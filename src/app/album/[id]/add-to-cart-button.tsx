@@ -1,13 +1,16 @@
-'use client'
+"use client";
 
 import { useCartContext } from "@/context/cart";
 
 export default function AddToCartButton({ albumId }: { albumId: number }) {
   const { setCart, cart } = useCartContext();
+  const inCart = cart.includes(albumId);
 
   const handleAddToCart = () => {
-    if (!cart.includes(albumId)) {
+    if (!inCart) {
       setCart([...cart, albumId]);
+    } else {
+      setCart(cart.filter((id) => id !== albumId));
     }
   };
 
@@ -16,7 +19,7 @@ export default function AddToCartButton({ albumId }: { albumId: number }) {
       onClick={handleAddToCart}
       className="bg-blue-500 text-white px-4 py-2 rounded"
     >
-      Add to Cart
+      {inCart ? "Remove From Cart" : "Add to Cart"}
     </button>
   );
 }
