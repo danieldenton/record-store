@@ -6,7 +6,7 @@ export default function CartTableComponent({ albums }: { albums: CartAlbum[] }) 
     return <CartAlbumComponent album={item} />;
   });
   return (
-    <table className="min-w-full border-collapse">
+    <table className="w-full border">
       <thead>
         <tr>
           <th className="border-b p-2 text-left">Select</th>
