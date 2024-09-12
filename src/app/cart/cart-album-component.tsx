@@ -25,14 +25,14 @@ export default function CartAlbumComponent({ album }: { album: CartAlbum }) {
 
   return (
     <tr>
-      <td className="p-2 text-center border">
+      <td className="p-2 text-center border-y">
         <input
           type="checkbox"
           checked={isInCart}
           onChange={(e) => handleCheckboxChange(e.target.checked)}
         />
       </td>
-      <td className="p-2 flex justify-center border-b">
+      <td className="p-2 flex justify-center border-l border-t">
         <Image src={album.cover} alt={album.name} height={80} width={80} className="border"/>
       </td>
       <td className="p-2 border">{album.name}</td>

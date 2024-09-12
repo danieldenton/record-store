@@ -27,9 +27,9 @@ export default function CartTableComponent({
         </thead>
         <tbody>{cartItems}</tbody>
       </table>
-      <div className="flex border-b border-r">
-        <p className="font-bold text-xl text-end w-full border py-4">Subtotal</p>
-        <p className="font-bold text-xl border-b p-2">{totalPrice}</p>
+      <div className="flex border-b border-x">
+        <p className="font-bold text-xl text-end py-4">Subtotal</p>
+        <p className="font-bold text-xl border-l p-2">{totalPrice}</p>
       </div>
     </>
   );
