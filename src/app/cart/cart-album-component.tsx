@@ -32,7 +32,7 @@ export default function CartAlbumComponent({ album }: { album: CartAlbum }) {
           onChange={(e) => handleCheckboxChange(e.target.checked)}
         />
       </td>
-      <td className="p-2 flex justify-center border">
+      <td className="p-2 flex justify-center border-b">
         <Image src={album.cover} alt={album.name} height={80} width={80} className="border"/>
       </td>
       <td className="p-2 border">{album.name}</td>

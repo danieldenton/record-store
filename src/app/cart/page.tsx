@@ -22,7 +22,9 @@ export default async function Cart({
   return (
     <div className="w-full flex flex-col items-center align-center">
       <Navbar searchResults={searchResults} />
+      <div className="w-full px-20 mt-10">
       <CartTableComponent albums={albums} />
+      </div>
     </div>
   );
 }
