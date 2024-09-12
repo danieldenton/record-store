@@ -1,5 +1,8 @@
 import { sql } from "@vercel/postgres";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 import { SearchResult, Album, Artist } from "./definitions";
+import { postUser, userSchema } from "./actions";
 
 export async function fetchSearch(query: string) {
   try {
@@ -202,3 +205,44 @@ export async function fetchAlbumsByIds(ids: string) {
     throw new Error("Failed to fetch albums.");
   }
 }
+
+async function getUserFromDB(user: KindeUser<Record<string, any>>) {
+  try {
+    const existingUserQuery = await sql`
+        SELECT * FROM users WHERE user_id = ${user.id};
+      `;
+
+    let existingUser = existingUserQuery.rows[0];
+
+    const validatedUser = userSchema.safeParse(existingUser);
+
+    if (!validatedUser.success) {
+      console.error(validatedUser.error);
+      return;
+    }
+
+    return validatedUser.data;
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    throw new Error("Failed to fetch user from the database.");
+  }
+}
+
+export async function getUserWrapperFunction() {
+  try {
+    const { getUser } = getKindeServerSession();
+    const kindeUser = await getUser();
+    if (kindeUser && kindeUser.id && kindeUser.email) {
+      let user = await getUserFromDB(kindeUser);
+      if (!user) {
+        user = await postUser(kindeUser);
+      }
+      return user;
+    } else {
+      console.error("Kinde user is invalid or missing data");
+    }
+  } catch (error) {
+    console.error("Error handling Kinde user:", error);
+  }
+}
+
