@@ -1,12 +1,17 @@
+"use client";
+
 import CartAlbumComponent from "./cart-album-component";
 import Subtotal from "./subtotal";
+import CheckoutButton from "./checkout-button";
 import { CartAlbum } from "../lib/definitions";
+import { useCartContext } from "@/context/cart";
 
 export default function CartTableComponent({
   albums,
 }: {
   albums: CartAlbum[];
 }) {
+  const { cart } = useCartContext();
   const cartItems = albums.map((item) => {
     return <CartAlbumComponent album={item} />;
   });
@@ -25,6 +30,7 @@ export default function CartTableComponent({
         </thead>
         <tbody>{cartItems}</tbody>
         <Subtotal albums={albums} />
+        <CheckoutButton />
       </table>
     </>
   );

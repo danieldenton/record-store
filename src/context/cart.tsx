@@ -5,6 +5,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 type CartContext = {
   cart: number[];
   setCart: React.Dispatch<React.SetStateAction<number[]>>;
+  cartParam: string
 };
 
 export const CartContext = createContext<CartContext | null>(null);
@@ -21,13 +22,14 @@ export default function CartContextProvider({
     }
     return [];
   });
+  const cartParam = cart.join(",");
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
+    <CartContext.Provider value={{ cart, setCart, cartParam }}>
       {children}
     </CartContext.Provider>
   );

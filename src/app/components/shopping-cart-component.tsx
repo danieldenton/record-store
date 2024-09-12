@@ -4,8 +4,7 @@ import Link from "next/link";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useCartContext } from "@/context/cart";
 export default function ShoppingCartComponent() {
-  const { cart } = useCartContext();
-  const cartParam = cart.join(",");
+  const { cart, cartParam } = useCartContext();
   const numberOfCartItems = cart.length;
   return (
     <Link
