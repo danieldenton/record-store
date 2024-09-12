@@ -30,8 +30,8 @@ export default function CartTableComponent({
           <td></td>
           <td className="border-t"></td>
           <td></td>
-          <td className="font-bold text-xl px-2 py-6 text-l">Subtotal:</td>
-          <td className="font-bold text-xl px-2 py-6 text-r border-l">
+          <td className="font-bold text-xl px-2 py-6 text-right">Subtotal:</td>
+          <td className="font-bold text-xl px-2 py-6 border-l">
             {`$${totalPrice.toFixed(2)}`}
           </td>
         </tr>
