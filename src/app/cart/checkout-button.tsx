@@ -7,7 +7,7 @@ export default function CheckoutButton() {
     <div className="w-full py-7 flex justify-end">
     <Link
       href={`/checkout?checkout=${encodeURIComponent(cartParam)}`}
-      className="bg-red text-white font-bold py-3 w-[200px] text-center rounded"
+      className="bg-red text-white font-bold py-3 w-[222px] text-center rounded"
     >
       Checkout
     </Link>
