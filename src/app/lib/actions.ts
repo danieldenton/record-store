@@ -1,11 +1,19 @@
 "use server";
 
 import { sql } from "@vercel/postgres";
+import { z } from "zod";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
-import { User } from "./definitions";
 
-export async function postUser(user: KindeUser<Record<string, any>>) {
+const userSchema = z.object({
+  id: z.number(),
+  user_id: z.string(),
+  email: z.string(),
+  first_name: z.string(),
+  last_name: z.string(),
+});
+
+async function postUser(user: KindeUser<Record<string, any>>) {
   try {
     const response = await sql`
           INSERT INTO users (user_id, email, first_name, last_name)
@@ -13,14 +21,21 @@ export async function postUser(user: KindeUser<Record<string, any>>) {
           RETURNING *;
         `;
 
-    return response.rows[0];
+    const validatedUser = userSchema.safeParse(response.rows[0]);
+
+    if (!validatedUser.success) {
+      console.error(validatedUser.error);
+      return;
+    }
+
+    return validatedUser;
   } catch (error) {
     console.error("Error inserting new user:", error);
     throw new Error("Failed to create user.");
   }
 }
 
-export async function getUserFromDB(user: KindeUser<Record<string, any>>) {
+async function getUserFromDB(user: KindeUser<Record<string, any>>) {
   try {
     const existingUserQuery = await sql`
         SELECT * FROM users WHERE user_id = ${user.id};
@@ -28,11 +43,14 @@ export async function getUserFromDB(user: KindeUser<Record<string, any>>) {
 
     let existingUser = existingUserQuery.rows[0];
 
-    if (!existingUser) {
-      existingUser = await postUser(user);
+    const validatedUser = userSchema.safeParse(existingUser);
+
+    if (!validatedUser.success) {
+      console.error(validatedUser.error);
+      return;
     }
 
-    return existingUser;
+    return validatedUser;
   } catch (error) {
     console.error("Error fetching user:", error);
     throw new Error("Failed to fetch user from the database.");
@@ -44,8 +62,11 @@ export async function getUserWrapperFunction() {
     const { getUser } = getKindeServerSession();
     const kindeUser = await getUser();
     if (kindeUser && kindeUser.id && kindeUser.email) {
-      const user = await getUserFromDB(kindeUser);
-      return user
+      let user = await getUserFromDB(kindeUser);
+      if (!user) {
+        user = await postUser(kindeUser);
+      }
+      return user;
     } else {
       console.error("Kinde user is invalid or missing data");
     }
