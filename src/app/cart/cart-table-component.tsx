@@ -1,4 +1,5 @@
 import CartAlbumComponent from "./cart-album-component";
+import Subtotal from "./subtotal";
 import { CartAlbum } from "../lib/definitions";
 
 export default function CartTableComponent({
@@ -26,15 +27,7 @@ export default function CartTableComponent({
           </tr>
         </thead>
         <tbody>{cartItems}</tbody>
-        <tr>
-          <td></td>
-          <td className="border-t"></td>
-          <td></td>
-          <td className="font-bold text-xl px-2 py-6 text-right">Subtotal:</td>
-          <td className="font-bold text-xl px-2 py-6 border-l">
-            {`$${totalPrice.toFixed(2)}`}
-          </td>
-        </tr>
+        <Subtotal albums={albums}/>
       </table>
     </>
   );
