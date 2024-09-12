@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Navbar from "../components/navbar";
 import { fetchSearch, fetchAlbumsByIds } from "../lib/data";
-import CartPageComponent from "./cart-page-component"
+import CartTableComponent from "./cart-table-component";
 
 export const metadata: Metadata = {
   title: "Cart",
@@ -22,7 +22,7 @@ export default async function Cart({
   return (
     <div className="w-full flex flex-col items-center align-center">
       <Navbar searchResults={searchResults} />
-      <CartPageComponent albums={albums} />
+      <CartTableComponent albums={albums} />
     </div>
   );
 }
