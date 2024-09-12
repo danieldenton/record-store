@@ -28,7 +28,7 @@ async function postUser(user: KindeUser<Record<string, any>>) {
       return;
     }
 
-    return validatedUser;
+    return validatedUser.data;
   } catch (error) {
     console.error("Error inserting new user:", error);
     throw new Error("Failed to create user.");
@@ -50,7 +50,7 @@ async function getUserFromDB(user: KindeUser<Record<string, any>>) {
       return;
     }
 
-    return validatedUser;
+    return validatedUser.data;
   } catch (error) {
     console.error("Error fetching user:", error);
     throw new Error("Failed to fetch user from the database.");
