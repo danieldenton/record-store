@@ -30,8 +30,9 @@ export default function CartTableComponent({
         </thead>
         <tbody>{cartItems}</tbody>
         <Subtotal albums={albums} />
-        <CheckoutButton />
+       
       </table>
+      <CheckoutButton />
     </>
   );
 }

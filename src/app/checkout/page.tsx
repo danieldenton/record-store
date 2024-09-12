@@ -15,11 +15,14 @@ export default async function Checkout({
   const checkoutArray = checkoutQuery.split(",").filter(Boolean);
   const formattedCheckout = `{${checkoutArray.join(",")}}`;
   const albums = await fetchAlbumsByIds(formattedCheckout);
+
+  const albumNames = albums.map((album) => {
+    return <p>{album.name}</p>;
+  });
   return (
     <div>
       <Link href={"/checkout"}>Back</Link>
+      {albumNames}
     </div>
   );
 }
-
-// fix this
