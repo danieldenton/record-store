@@ -35,5 +35,5 @@ export type CartAlbum = {
   name: string;
   cover: string;
   price: string;
-  artists: string[]
+  artists: string[];
 };

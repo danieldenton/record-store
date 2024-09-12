@@ -9,7 +9,7 @@ import Search from "./search";
 import ShoppingCartComponent from "./shopping-cart-component";
 import LoggedInAs from "./logged-in-as";
 import { SearchResult } from "../lib/definitions";
-import { getUserWrapperFunction } from "../lib/data";
+import { getUserWrapperFunction } from "../lib/actions";
 
 export default async function Navbar({
   searchResults,
