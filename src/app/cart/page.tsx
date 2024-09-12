@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Navbar from "../components/navbar";
 import { fetchSearch, fetchAlbumsByIds } from "../lib/data";
 import CartTableComponent from "./cart-table-component";
+import CheckoutButton from "./checkout-button";
 
 export const metadata: Metadata = {
   title: "Cart",
@@ -25,6 +26,7 @@ export default async function Cart({
       <div className="w-full px-20 mt-10">
       <CartTableComponent albums={albums} />
       </div>
+      <CheckoutButton />
     </div>
   );
 }
