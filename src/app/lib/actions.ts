@@ -11,7 +11,6 @@ const userSchema = z.object({
   email: z.string(),
   first_name: z.string(),
   last_name: z.string(),
-  cart: z.array(z.number()),
 });
 
 async function postUser(user: KindeUser<Record<string, any>>) {
@@ -76,25 +75,25 @@ export async function getUserWrapperFunction() {
   }
 }
 
-export async function updateUser(userId: string, cart: number[]) {
-  try {
-    const response = await sql`
-      UPDATE users
-      SET cart = ${JSON.stringify(cart)}
-      WHERE user_id = ${userId}
-      RETURNING *;
-    `;
+// export async function updateUser(userId: string, cart: number[]) {
+//   try {
+//     const response = await sql`
+//       UPDATE users
+//       SET cart = ${JSON.stringify(cart)}
+//       WHERE user_id = ${userId}
+//       RETURNING *;
+//     `;
 
-    const validatedUser = userSchema.safeParse(response.rows[0]);
+//     const validatedUser = userSchema.safeParse(response.rows[0]);
 
-    if (!validatedUser.success) {
-      console.error(validatedUser.error);
-      return;
-    }
+//     if (!validatedUser.success) {
+//       console.error(validatedUser.error);
+//       return;
+//     }
 
-    return validatedUser.data;
-  } catch (error) {
-    console.error("Error updating user:", error);
-    throw new Error("Failed to update user.");
-  }
-}
+//     return validatedUser.data;
+//   } catch (error) {
+//     console.error("Error updating user:", error);
+//     throw new Error("Failed to update user.");
+//   }
+// }
