@@ -16,7 +16,7 @@ export default function Subtotal({ albums }: { albums: CartAlbum[] }) {
       <td className="border-t"></td>
       <td></td>
       <td className="font-bold text-xl px-2 py-6 text-right">Subtotal:</td>
-      <td className="font-bold text-xl px-2 py-6 border-l">
+      <td className="px-2 py-6 border-l">
         {`$${totalPrice.toFixed(2)}`}
       </td>
     </tr>
