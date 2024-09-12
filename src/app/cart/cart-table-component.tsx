@@ -26,11 +26,16 @@ export default function CartTableComponent({
           </tr>
         </thead>
         <tbody>{cartItems}</tbody>
+        <tr>
+          <td></td>
+          <td className="border-t"></td>
+          <td></td>
+          <td className="font-bold text-xl px-2 py-6 text-l">Subtotal:</td>
+          <td className="font-bold text-xl px-2 py-6 text-r border-l">
+            {`$${totalPrice.toFixed(2)}`}
+          </td>
+        </tr>
       </table>
-      <div className="flex border-b border-x">
-        <p className="font-bold text-xl text-end py-4">Subtotal</p>
-        <p className="font-bold text-xl border-l p-2">{totalPrice}</p>
-      </div>
     </>
   );
 }
