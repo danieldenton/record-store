@@ -39,12 +39,9 @@ function generateXMLResponse() {
   return xmlData;
 }
 
-// API handler
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Set Content-Type header to XML
   res.setHeader('Content-Type', 'application/xml');
 
-  // Generate and send XML response
   const xmlResponse = generateXMLResponse();
   res.status(200).send(xmlResponse);
 }
