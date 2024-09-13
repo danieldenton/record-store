@@ -2,7 +2,7 @@
 
 import CartAlbumComponent from "./cart-album-component";
 import Subtotal from "./subtotal";
-import CheckoutButton from "./checkout-button";
+import CheckoutButton from "../shipping-information/checkout-button";
 import { CartAlbum } from "../lib/definitions";
 import { useCartContext } from "@/context/cart";
 
