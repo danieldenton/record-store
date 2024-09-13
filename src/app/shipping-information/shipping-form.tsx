@@ -60,21 +60,22 @@ export default function ShippingForm() {
 
   const shippingFormInputs = formInputData.map((input) => {
     return (
-      <label>
+      <label className="flex flex-col font-bold text-center p-2">
         {input.label}
         <input
           type="text"
           name={input.name}
           value={input.value}
           onChange={handleChange}
+          className="w-full"
         />
       </label>
     );
   });
 
   return (
-    <div className="border p-4">
-      <form>
+    <div className="flex justify-center border p-4 w-1/2">
+      <form className="flex flex-col w-full">
         {shippingFormInputs}
         <button type="submit" className="mt-4 p-2 bg-red text-white">
           Submit
