@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function CheckoutButton() {
+export default function ContiueToShipping() {
   return (
     <div className="w-full py-7 flex justify-end">
     <Link
