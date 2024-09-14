@@ -32,13 +32,13 @@ export default function ShippingForm() {
       value: formData.name,
     },
     {
-      label: "Address 1",
-      name: "address1",
+      label: "Street 1",
+      name: "street1",
       value: formData.name,
     },
     {
-      label: "Address 2",
-      name: "address2",
+      label: "Street 2",
+      name: "street",
       value: formData.name,
     },
     {
