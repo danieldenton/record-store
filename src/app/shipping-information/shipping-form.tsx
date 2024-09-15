@@ -95,7 +95,10 @@ export default function ShippingForm() {
 
   const shippingFormInputs = formInputData.map((input) => {
     return (
-      <label className="flex flex-col font-bold text-center my-2">
+      <label
+        className="flex flex-col font-bold text-center my-2"
+        key={input.name}
+      >
         {input.label}
         <input
           type="text"
@@ -112,9 +115,9 @@ export default function ShippingForm() {
     <div className="flex flex-col justify-center border-2 p-6 w-1/2 rounded">
       <div className="text-center">
         {billing ? (
-          <p className="font-bold text-xl">Billing Address</p>
+          <p className="font-bold text-yellow text-xl">Billing Address</p>
         ) : (
-          <p className="font-bold text-xl">Shipping Address</p>
+          <p className="font-bold text-yellow  text-xl">Shipping Address</p>
         )}
       </div>
       <form className="flex flex-col w-full h-full p-6" onSubmit={handleSubmit}>
