@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 type CartContext = {
   cart: number[];
   setCart: React.Dispatch<React.SetStateAction<number[]>>;
-  cartParam: string
+  cartParam: string;
 };
 
 export const CartContext = createContext<CartContext | null>(null);
@@ -15,13 +15,20 @@ export default function CartContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [cart, setCart] = useState<number[]>(() => {
+  const [cart, setCart] = useState<number[]>([])
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
     if (typeof window !== "undefined") {
       const savedCart = localStorage.getItem("cart");
-      return savedCart ? JSON.parse(savedCart) : [];
+      console.log(savedCart)
+      if (savedCart) {
+        setCart(JSON.parse(savedCart)); 
+      }
+      setIsLoaded(true);
     }
-    return [];
-  });
+  }, []);
+
   const cartParam = cart.join(",");
 
   useEffect(() => {
@@ -30,7 +37,7 @@ export default function CartContextProvider({
 
   return (
     <CartContext.Provider value={{ cart, setCart, cartParam }}>
-      {children}
+      {isLoaded ? children : null} 
     </CartContext.Provider>
   );
 }
