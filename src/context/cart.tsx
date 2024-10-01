@@ -15,20 +15,18 @@ export default function CartContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [cart, setCart] = useState<number[]>([])
+  const [cart, setCart] = useState<number[]>(() => {
+    if (typeof window !== "undefined") {
+      const savedCart = localStorage.getItem("cart");
+      return savedCart ? JSON.parse(savedCart) : [];
+    }
+    return [];
+  });
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedCart = localStorage.getItem("cart");
-      console.log(savedCart)
-      if (savedCart) {
-        setCart(JSON.parse(savedCart)); 
-      }
-      setIsLoaded(true);
-    }
+    setIsLoaded(true);
   }, []);
-
   const cartParam = cart.join(",");
 
   useEffect(() => {
@@ -37,7 +35,7 @@ export default function CartContextProvider({
 
   return (
     <CartContext.Provider value={{ cart, setCart, cartParam }}>
-      {isLoaded ? children : null} 
+      {isLoaded ? children : null}
     </CartContext.Provider>
   );
 }
