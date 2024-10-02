@@ -27,14 +27,16 @@ export default async function Artist({
       <Navbar searchResults={searchResults} />
       <ArtistAlbumPageTitle name={artist.name} />
       <div className="flex w-full justify-center">
-        <div className="flex justify-center w-1/2 py-8">
+        <div className="flex justify-center w-1/2  mt-8 border">
           <ImageComponent image={image} />
         </div>
-        <div className="w-1/2 flex flex-col justify-center py-8">
-        <div className="bg-white p-2">
-        <h2 className="font-bold text-xl text-black mx-auto">Albums</h2>
-        </div>
-        <AlbumNameLinks albums={artist.albums} />
+        <div className="w-1/2 flex flex-col justify-center mt-8 border">
+          <div className="bg-white p-2">
+            <h2 className="font-bold text-xl text-black mx-auto">Albums</h2>
+          </div>
+          <div className="my-2">
+          <AlbumNameLinks albums={artist.albums} />
+          </div>
         </div>
       </div>
     </div>
