@@ -1,3 +1,7 @@
 export default function ArtistAlbumPageTitle({ name }: { name: string }) {
-  return <h1 className="text-3xl font-bold mb-5">{name}</h1>;
+  return (
+    <div className="bg-white my-5 py-3 w-full flex justify-center">
+      <h1 className="text-3xl text-black font-bold">{name}</h1>;
+    </div>
+  )
 }

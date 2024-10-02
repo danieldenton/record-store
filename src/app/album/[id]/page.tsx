@@ -3,8 +3,8 @@ import { fetchAlbumById, fetchSearch } from "../../lib/data";
 import Navbar from "@/app/components/navbar";
 import ArtistAlbumPageTitle from "@/app/components/artist-album-page-title";
 import ImageComponent from "@/app/components/image-component";
-import ArtistNameLink from "@/app/album/[id]/artist-name-link";
-import AddToCartButton from "@/app/album/[id]/add-to-cart-button";
+import ArtistNameLink from "@/app/components/artist-name-link";
+import AddToCartButton from "@/app/components/add-to-cart-button";
 
 export const metadata: Metadata = {
   title: "Album",
