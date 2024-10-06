@@ -23,12 +23,24 @@ export default async function Album({
   const searchResults = query !== "" ? await fetchSearch(query) : [];
 
   return (
-    <div className="w-full flex flex-col items-center align center">
+    <div className="w-full flex flex-col align center">
       <Navbar searchResults={searchResults} />
       <ArtistAlbumPageTitle name={album.name} />
-      <ImageComponent image={album.cover} />
-      <ArtistNameLink artists={album.artists} />
-      <AddToCartButton albumId={album.id} />
+
+      <div className="flex w-full justify-center">
+        <div className="flex flex-col justify-center items-center w-1/2 mt-4">
+          <ImageComponent image={album.cover} />
+          <AddToCartButton albumId={album.id} />
+        </div>
+        <div className="w-1/3 flex flex-col justify-center">
+          <div className="bg-white p-2">
+            <h2 className="font-bold text-xl text-black mx-auto">Artist</h2>
+          </div>
+          <div className="my-2">
+            <ArtistNameLink artists={album.artists} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

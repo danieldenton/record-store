@@ -27,6 +27,7 @@ export default function CartContextProvider({
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+  
   const cartParam = cart.join(",");
 
   useEffect(() => {

@@ -131,7 +131,8 @@ export async function fetchArtistById(id: string) {
           SELECT 
             id,
             name,
-            cover
+            cover,
+            release
           FROM albums
           WHERE id = ANY(${albumIdsString});
     `;
@@ -140,6 +141,7 @@ export async function fetchArtistById(id: string) {
       id: row.id,
       name: row.name,
       cover: row.cover,
+      release: row.release,
     }));
 
     return {
@@ -154,7 +156,6 @@ export async function fetchArtistById(id: string) {
 
 export async function fetchAlbumsByIds(ids: string) {
   try {
-
     const albumQuery = await sql<Album>`
         SELECT
           id,
@@ -202,6 +203,3 @@ export async function fetchAlbumsByIds(ids: string) {
     throw new Error("Failed to fetch albums.");
   }
 }
-
-
-

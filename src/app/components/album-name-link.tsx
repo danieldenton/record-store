@@ -5,6 +5,7 @@ type Album = {
   id: string;
   name: string;
   cover: string;
+  release: string
 };
 
 export default function AlbumNameLinks({ albums }: { albums: Album[] }) {
@@ -17,7 +18,7 @@ export default function AlbumNameLinks({ albums }: { albums: Album[] }) {
       >
         <Image src={album.cover} alt={album.name} height={100} width={100} />
         <p className="ml-3 font-bold">{album.name}</p>
-        {/* <p>{album.}</p> */}
+        <p className="ml-2 font-thin">{album.release}</p>
       </Link>
     );
   });
