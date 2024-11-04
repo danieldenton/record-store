@@ -15,7 +15,6 @@ export default async function Cart({
 }) {
   
   const cartQuery = searchParams?.cart || "";
-  
   const cartArray = cartQuery.split(",").filter(Boolean);
   const formattedCart = `{${cartArray.join(",")}}`;
   const albums = await fetchAlbumsByIds(formattedCart);
