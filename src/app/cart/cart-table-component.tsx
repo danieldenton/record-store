@@ -10,8 +10,8 @@ export default function CartTableComponent({
 }: {
   albums: CartAlbum[];
 }) {
-  const cartItems = albums.map((item) => {
-    return <CartAlbumComponent album={item} />;
+  const cartItems = albums.map((item, idx) => {
+    return <CartAlbumComponent album={item} key={idx}/>;
   });
 
   return (

@@ -11,14 +11,14 @@ export default function Subtotal({ albums }: { albums: CartAlbum[] }) {
   }, 0);
 
   return (
-    <tr>
-      <td></td>
-      <td className="border-t"></td>
-      <td></td>
-      <td className="font-bold text-xl px-2 py-6 text-right">Subtotal:</td>
-      <td className="px-2 py-6 border-l">
-        {`$${totalPrice.toFixed(2)}`}
-      </td>
-    </tr>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td className="border-t"></td>
+        <td></td>
+        <td className="font-bold text-xl px-2 py-6 text-right">Subtotal:</td>
+        <td className="px-2 py-6 border-l">{`$${totalPrice.toFixed(2)}`}</td>
+      </tr>
+    </tfoot>
   );
 }
