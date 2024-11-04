@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { fetchAlbumById, fetchSearch } from "../../lib/data";
+import { fetchAlbumById } from "../../lib/data";
 import Navbar from "@/app/components/navbar";
 import ArtistAlbumPageTitle from "@/app/components/artist-album-page-title";
 import ImageComponent from "@/app/components/image-component";
@@ -19,12 +19,10 @@ export default async function Album({
 }) {
   const id = params.id;
   const album = await fetchAlbumById(id);
-  const query = searchParams?.query || "";
-  const searchResults = query !== "" ? await fetchSearch(query) : [];
 
   return (
     <div className="w-full flex flex-col align center">
-      <Navbar searchResults={searchResults} />
+      <Navbar searchParams={searchParams} />
       <ArtistAlbumPageTitle name={album.name} />
 
       <div className="flex w-full justify-center">

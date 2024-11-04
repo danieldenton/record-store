@@ -8,14 +8,16 @@ import {
 import Search from "./search";
 import ShoppingCartComponent from "./shopping-cart-component";
 import LoggedInAs from "./logged-in-as";
-import { SearchResult, User } from "../lib/definitions";
+import { fetchSearch } from "../lib/data";
 import { getUserWrapperFunction } from "../lib/actions";
 
 export default async function Navbar({
-  searchResults,
+  searchParams,
 }: {
-  searchResults: SearchResult[];
+  searchParams?: { query?: string; };
 }) {
+  const query = searchParams?.query || "";
+  const searchResults = query !== "" ? await fetchSearch(query) : [];
   const user = await getUserWrapperFunction();
 
   return (

@@ -13,16 +13,16 @@ export default async function Cart({
 }: {
   searchParams?: { query?: string; cart?: string };
 }) {
-  const query = searchParams?.query || "";
+  
   const cartQuery = searchParams?.cart || "";
-  const searchResults = query !== "" ? await fetchSearch(query) : [];
+  
   const cartArray = cartQuery.split(",").filter(Boolean);
   const formattedCart = `{${cartArray.join(",")}}`;
   const albums = await fetchAlbumsByIds(formattedCart);
 
   return (
     <div className="w-full flex flex-col items-center align-center">
-      <Navbar searchResults={searchResults} />
+      <Navbar searchParams={searchParams} />
       <div className="w-full px-20 mt-10">
         <CartTableComponent albums={albums} />
         <ContiueToShipping />
