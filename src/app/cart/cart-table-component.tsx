@@ -2,7 +2,6 @@
 
 import CartAlbumComponent from "./cart-album-component";
 import Subtotal from "./subtotal";
-import ContiueToShipping from "./continue-to-shipping-button";
 import { CartAlbum } from "../lib/definitions";
 
 export default function CartTableComponent({
@@ -11,7 +10,7 @@ export default function CartTableComponent({
   albums: CartAlbum[];
 }) {
   const cartItems = albums.map((item, idx) => {
-    return <CartAlbumComponent album={item} key={idx}/>;
+    return <CartAlbumComponent album={item} key={idx} />;
   });
 
   return (
@@ -29,7 +28,6 @@ export default function CartTableComponent({
         <tbody>{cartItems}</tbody>
         <Subtotal albums={albums} />
       </table>
-      <ContiueToShipping />
     </>
   );
 }
