@@ -64,7 +64,6 @@ export async function getUserWrapperFunction() {
     
     if (kindeUser && kindeUser.id && kindeUser.email) {
       let user = await getUserFromDB(kindeUser);
-      console.log("user", user);
       if (!user) {
         user = await postUser(kindeUser);
       }

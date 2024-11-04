@@ -24,7 +24,7 @@ export type SearchResult = {
 
 export type User = {
   id: number;
-  user_d: string;
+  user_id: string;
   email: string;
   first_name: string;
   last_name: string;
