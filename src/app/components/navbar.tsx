@@ -32,7 +32,7 @@ export default async function Navbar({
         <ShoppingCartComponent />
         {user ? (
           <>
-            <LoggedInAs email={user.email} />
+            <LoggedInAs user={user} />
             <LogoutLink className="flex justify-center bg-slate-50 text-black py-2 rounded w-15 mx-1 mb-1 min-w-[75px]">
               Log out
             </LogoutLink>
